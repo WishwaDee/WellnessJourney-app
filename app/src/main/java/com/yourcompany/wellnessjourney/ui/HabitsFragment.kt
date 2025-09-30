@@ -1,4 +1,4 @@
-package com.yourcompany.wellnessjourney
+package com.yourcompany.wellnessjourney.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.yourcompany.wellnessjourney.R
 
 class HabitsFragment : Fragment() {
     override fun onCreateView(

@@ -1,19 +1,18 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    // If using Kotlin Android Extensions or Parcelize
-    // id("org.jetbrains.kotlin.android.extensions") // Older - not recommended
+    // If you need Kotlin Parcelize (for passing objects safely between components)
     // id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.yourcompany.wellnessjourney" // Make sure this matches your package name
-    compileSdk = 34 // Or latest API level you are targeting
+    namespace = "com.yourcompany.wellnessjourney" // <<< Make sure this is YOUR CORRECT PACKAGE NAME
+    compileSdk = 35 // Updated to latest stable API Level
 
     defaultConfig {
-        applicationId = "com.yourcompany.wellnessjourney"
-        minSdk = 24 // Or whatever minimum SDK you chose
-        targetSdk = 34 // Should generally match compileSdk
+        applicationId = "com.yourcompany.wellnessjourney" // <<< Make sure this is YOUR CORRECT APPLICATION ID
+        minSdk = 24 // Keep this as you intended (e.g., API 24: Android 7.0 Nougat)
+        targetSdk = 35 // Should match compileSdk
         versionCode = 1
         versionName = "1.0"
 
@@ -42,18 +41,30 @@ android {
 }
 
 dependencies {
-    // Existing dependencies already here
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0")) // Adjust Kotlin BOM version if needed
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.activity:activity-ktx:1.7.2")
-    implementation("androidx.fragment:fragment-ktx:1.5.7")
+    // Kotlin BOM (Bill of Materials) - For managing Kotlin versions across libraries
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.0")) // Updated Kotlin BOM to latest stable (September 2025)
 
-    // Navigation Component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+    // AndroidX Core KTX - Essential Android extensions
+    implementation("androidx.core:core-ktx:1.13.1") // Updated to latest stable
+
+    // AppCompat - For backward compatibility of Material Design features
+    implementation("androidx.appcompat:appcompat:1.6.1") // This is still the latest stable
+
+    // Material Design - For Google's Material Design components (BottomNavigationView, etc.)
+    implementation("com.google.android.material:material:1.12.0") // Updated to latest stable
+
+    // ConstraintLayout - For flexible and responsive layouts
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4") // This is still the latest stable
+
+    // Activity KTX - Extensions for Activity class
+    implementation("androidx.activity:activity-ktx:1.9.0") // Updated to latest stable
+
+    // Fragment KTX - Extensions for Fragment class
+    implementation("androidx.fragment:fragment-ktx:1.7.0") // Updated to latest stable
+
+    // Navigation Component - For handling app navigation (NavHostFragment, NavController)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7") // Updated to latest stable
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")     // Updated to latest stable
 
     // Testing dependencies
     testImplementation("junit:junit:4.13.2")

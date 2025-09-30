@@ -11,14 +11,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // This sets the layout defined above
+        setContentView(R.layout.activity_main)
 
         val navView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
 
-        // Find the NavController associated with your NavHostFragment
-        val navController = findNavController(R.id.nav_host_fragment) // <<< Looks for NavHostFragment by ID
+        // The error indicates this line: MainActivity.kt:20
+        // It means 'nav_host_fragment' is not yet inflated or configured properly
+        val navController = findNavController(R.id.nav_host_fragment)
 
-        // Link the BottomNavigationView to the NavController
         navView.setupWithNavController(navController)
     }
 }

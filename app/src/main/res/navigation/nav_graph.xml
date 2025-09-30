@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.yourcompany.wellnessjourney.DashboardFragment"
+        android:name="com.yourcompany.wellnessjourney.ui.DashboardFragment"
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/moodFragment"
-        android:name="com.yourcompany.wellnessjourney.MoodFragment"
+        android:name="com.yourcompany.wellnessjourney.ui.MoodFragment"
         android:label="Mood Journal"
         tools:layout="@layout/fragment_mood" />
     <fragment
         android:id="@+id/hydrationFragment"
-        android:name="com.yourcompany.wellnessjourney.HydrationFragment"
+        android:name="com.yourcompany.wellnessjourney.ui.HydrationFragment"
         android:label="Hydration Tracker"
         tools:layout="@layout/fragment_hydration" />
     <fragment
         android:id="@+id/habitsFragment"
-        android:name="com.yourcompany.wellnessjourney.HabitsFragment"
+        android:name="com.yourcompany.wellnessjourney.ui.HabitsFragment"
         android:label="Daily Habits"
         tools:layout="@layout/fragment_habits" />
 </navigation>

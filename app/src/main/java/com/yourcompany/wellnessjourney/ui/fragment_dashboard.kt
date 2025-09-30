@@ -1,4 +1,4 @@
-package com.yourcompany.wellnessjourney
+package com.yourcompany.wellnessjourney.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
