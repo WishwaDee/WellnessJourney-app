@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WellnessJourney"> <!-- <<< Make sure your theme is XML based -->
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
