@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary colors for your app's theme -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <!-- Common UI colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Example custom colors for your wellness app (adapt these to your design) -->
+    <color name="colorPrimary">#6200EE</color> <!-- A deep purple -->
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>  <!-- A bright teal -->
+
+    <color name="background_light">#F5F5F5</color>
+    <color name="text_dark">#212121</color>
+    <color name="text_light">#757575</color>
+    <color name="gradient_start_blue">#A7EBFB</color> <!-- Example gradient start -->
+    <color name="gradient_end_purple">#6252DA</color>   <!-- Example gradient end -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="progress_completed">#4CAF50</color> <!-- Green for completion -->
+    <color name="progress_remaining">#F44336</color> <!-- Red for remaining -->
+    <color name="mood_happy">#FFC107</color> <!-- Yellow for happy mood -->
+    <color name="mood_sad">#2196F3</color>   <!-- Blue for sad mood -->
+
+</resources>
