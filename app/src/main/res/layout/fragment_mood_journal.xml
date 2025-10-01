@@ -1,42 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="@color/surface_background"
+    android:clipToPadding="false"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mood Journal"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:padding="16dp"
-            android:background="@android:color/white"
-            android:elevation="4dp"/>
+            android:background="@drawable/bg_header_mood"
+            android:padding="24dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/moodRecyclerView"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextAppearance.Wellness.TitleLarge"
+                    android:text="Mood Journal"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    style="@style/TextAppearance.Wellness.Body"
+                    android:layout_marginTop="4dp"
+                    android:text="Track your emotional wellness"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp"
-            android:clipToPadding="false"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-48dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        style="@style/TextAppearance.Wellness.TitleSmall"
+                        android:text="Today's Mood"
+                        android:textColor="@color/text_primary" />
+
+                    <TextView
+                        android:id="@+id/moodSelectionHint"
+                        style="@style/TextAppearance.Wellness.Caption"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/mood_selection_hint"
+                        android:textColor="@color/text_secondary" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/moodChipGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:isSingleSelection="true"
+                        android:rowSpacing="8dp"
+                        android:singleLine="false"
+                        android:useDefaultMargins="false"
+                        app:singleSelection="true" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="@string/mood_note_hint">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/moodNoteInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapSentences|textMultiLine" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/moodCancelButton"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/action_cancel" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/moodSaveButton"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="@string/action_save" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                style="@style/TextAppearance.Wellness.SectionLabel"
+                android:text="Recent Moods" />
+
+            <TextView
+                android:id="@+id/moodEmptyState"
+                style="@style/TextAppearance.Wellness.Body"
+                android:layout_marginTop="12dp"
+                android:text="@string/mood_empty_state"
+                android:textColor="@color/text_secondary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/moodRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+        </LinearLayout>
     </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddMood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
-        app:tint="@android:color/white"/>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.core.widget.NestedScrollView>
