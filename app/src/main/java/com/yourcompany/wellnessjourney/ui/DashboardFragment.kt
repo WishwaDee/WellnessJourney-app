@@ -6,14 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.cardview.widget.CardView
+import android.widget.Toast
 
 import androidx.fragment.app.Fragment
 import com.yourcompany.wellnessjourney.R
+import com.yourcompany.wellnessjourney.MainActivity
 import com.yourcompany.wellnessjourney.data.Habit
 import com.yourcompany.wellnessjourney.data.HabitManager
 import java.text.SimpleDateFormat
