@@ -46,7 +46,7 @@
     </style>
 
     <style name="Widget.Wellness.MoodChip" parent="Widget.MaterialComponents.Chip.Filter">
-        <item name="chipBackgroundColor">@color/mood_chip_background</item>
+        <item name="chipBackgroundColor">@color/chip_background</item>
         <item name="chipStrokeColor">@color/card_stroke</item>
         <item name="chipStrokeWidth">1dp</item>
         <item name="android:textColor">@color/chip_text</item>
