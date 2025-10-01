@@ -1,3 +1,0 @@
-com.wellness.tracker.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
