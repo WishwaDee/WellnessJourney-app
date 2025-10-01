@@ -3,24 +3,24 @@
 3    package="com.wellness.tracker.test" >
 4
 5    <uses-sdk
-5-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:5:5-74
+5-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:5:5-74
 6        android:minSdkVersion="24"
-6-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:5:15-41
+6-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:5:15-41
 7        android:targetSdkVersion="34" />
-7-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:5:42-71
+7-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:5:42-71
 8
 9    <instrumentation
-9-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:11:5-15:70
+9-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:11:5-15:70
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:11:22-76
+10-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:11:22-76
 11        android:functionalTest="false"
-11-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:14:22-52
+11-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:14:22-52
 12        android:handleProfiling="false"
-12-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:13:22-53
+12-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:13:22-53
 13        android:label="Tests for com.wellness.tracker"
-13-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:15:22-68
+13-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:15:22-68
 14        android:targetPackage="com.wellness.tracker" />
-14-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:12:22-66
+14-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:12:22-66
 15
 16    <uses-permission android:name="android.permission.REORDER_TASKS" />
 16-->[androidx.test:core:1.5.0] C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\fb41041802fba7e1a057a20b6443c1eb\transformed\core-1.5.0\AndroidManifest.xml:24:5-72
@@ -40,12 +40,12 @@
 22    </queries>
 23
 24    <application
-24-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:7:5-9:19
+24-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:7:5-9:19
 25        android:debuggable="true"
 26        android:extractNativeLibs="false" >
 27        <uses-library android:name="android.test.runner" />
-27-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:8:9-60
-27-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7761391571838877418.xml:8:23-57
+27-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:8:9-60
+27-->D:\WellnessJourney-app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest10321529810033108915.xml:8:23-57
 28
 29        <activity
 29-->[androidx.test:core:1.5.0] C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\fb41041802fba7e1a057a20b6443c1eb\transformed\core-1.5.0\AndroidManifest.xml:27:9-34:20
