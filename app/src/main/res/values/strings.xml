@@ -1,40 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WellnessJourney</string>
-
-    <string name="wellness_dashboard_title">Your Wellness Dashboard</string>
-
-    <string name="todays_progress_title">Today\'s Progress</string>
-
-    <string name="label_habits">Habits</string>
-    <string name="label_hydration">Hydration</string>
-    <string name="reset_app_data_debug">Reset App Data (Debug)</string>
-    <string name="quick_stats_title">Quick Stats</string>
-
-    <string name="content_desc_today_mood">Today\'s recorded mood icon</string>
-    <string name="todays_mood_label">Today\'s Mood</string>
-
-    <string name="content_desc_water_intake">Water intake progress icon</string>
-    <string name="water_intake_label">Water Intake</string>
-    <string name="content_desc_habits_done">Habits completed icon</string>
-    <string name="habits_done_label">Habits Done</string>
-    <string name="content_desc_streak_count">Streak count badge</string>
-    <string name="streak_label">Current Streak</string>
-
-    <string name="todays_habits_title">Today\'s Habits</string>
-
-    <string name="no_habits_set_placeholder">No habits added yet. Create one to get started!</string>
-    <string name="hydration_tracker_screen_title">Hydration Tracker</string>
-    <string name="mood_journal_screen_title">Mood Journal</string>
-    <string name="content_desc_habit_icon">Icon representing the habit</string>
-
-    <string-array name="habit_icons_array">
-        <item>No Icon (Default)</item>
-        <item>Exercise Icon</item>
-        <item>Water Icon</item>
-        <item>Read Icon</item>
-        <item>Sleep Icon</item>
-        <item>Meditation Icon</item>
-        <!-- Add more descriptive icons here as you add drawables for them -->
-    </string-array>
+    <string name="app_name">Wellness Tracker</string>
+    <string name="habits">Habits</string>
+    <string name="mood">Mood</string>
+    <string name="settings">Settings</string>
+    <string name="add_habit">Add Habit</string>
+    <string name="edit_habit">Edit Habit</string>
+    <string name="delete_habit">Delete Habit</string>
+    <string name="habit_name">Habit Name</string>
+    <string name="habit_description">Description</string>
+    <string name="mood_journal">Mood Journal</string>
+    <string name="add_mood">Add Mood</string>
+    <string name="mood_note">Note</string>
+    <string name="hydration_reminder">Hydration Reminder</string>
+    <string name="reminder_interval">Reminder Interval</string>
+    <string name="user_settings">User Settings</string>
+    <string name="your_name">Your Name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="share">Share</string>
 </resources>

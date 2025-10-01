@@ -1,0 +1,6 @@
+com.wellness.tracker.test-annotation-experimental-1.3.0-0 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\89115ee02c5c8e57d4358ebec90cbef5\transformed\annotation-experimental-1.3.0\res
+com.wellness.tracker.test-core-1.5.0-1 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\fb41041802fba7e1a057a20b6443c1eb\transformed\core-1.5.0\res
+com.wellness.tracker.test-androidTest-2 D:\WellnessJourney-app\build\generated\res\resValues\androidTest\debug
+com.wellness.tracker.test-mergeDebugAndroidTestResources-3 D:\WellnessJourney-app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.wellness.tracker.test-mergeDebugAndroidTestResources-4 D:\WellnessJourney-app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.wellness.tracker.test-merged_res-5 D:\WellnessJourney-app\build\intermediates\merged_res\debugAndroidTest

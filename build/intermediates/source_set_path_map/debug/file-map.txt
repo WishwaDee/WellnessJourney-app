@@ -1,0 +1,57 @@
+com.wellness.tracker-lifecycle-livedata-core-2.6.2-0 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\022416bbd0686ad7121e8b8b4a449f14\transformed\lifecycle-livedata-core-2.6.2\res
+com.wellness.tracker-core-ktx-1.12.0-1 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\04f9c12b89574f70e02bcd95087cfab2\transformed\core-ktx-1.12.0\res
+com.wellness.tracker-slidingpanelayout-1.2.0-2 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\05fd825d2f41d69962eb0712239988fc\transformed\slidingpanelayout-1.2.0\res
+com.wellness.tracker-lifecycle-process-2.6.2-3 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\0bf0303e3eb74210d7095d677d713732\transformed\lifecycle-process-2.6.2\res
+com.wellness.tracker-lifecycle-livedata-2.6.2-4 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\0dd3a61e9ea5c5321db2cd9ec43f6dea\transformed\lifecycle-livedata-2.6.2\res
+com.wellness.tracker-activity-ktx-1.8.2-5 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\0f962004b9f94003605cc24ad8b81eb7\transformed\activity-ktx-1.8.2\res
+com.wellness.tracker-constraintlayout-2.1.4-6 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\12aa4b1b108c26892826820039ef9667\transformed\constraintlayout-2.1.4\res
+com.wellness.tracker-work-runtime-ktx-2.9.0-7 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\1cadaf3d4968ab4c65051ec29c8c1d44\transformed\work-runtime-ktx-2.9.0\res
+com.wellness.tracker-work-runtime-2.9.0-8 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\21c6e51e4caeb74fbcc97d581b904475\transformed\work-runtime-2.9.0\res
+com.wellness.tracker-savedstate-1.2.1-9 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\2699008ac61c5016e24fdf3b5324caa1\transformed\savedstate-1.2.1\res
+com.wellness.tracker-drawerlayout-1.1.1-10 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\35c67f7f16441ca6c2645d980873c524\transformed\drawerlayout-1.1.1\res
+com.wellness.tracker-window-1.0.0-11 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\4061a88f86333b3d1935139a2cb6f546\transformed\window-1.0.0\res
+com.wellness.tracker-lifecycle-viewmodel-2.6.2-12 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\42ede816aa77580d242aa0ddf73e89ce\transformed\lifecycle-viewmodel-2.6.2\res
+com.wellness.tracker-navigation-runtime-ktx-2.7.6-13 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\478461d75ed0168c6b7f636c6e0c8065\transformed\navigation-runtime-ktx-2.7.6\res
+com.wellness.tracker-activity-1.8.2-14 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\48822246cb41b51f6636705c720d74d6\transformed\activity-1.8.2\res
+com.wellness.tracker-cardview-1.0.0-15 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\51549c7aaf9df6726d64fa420e655c13\transformed\cardview-1.0.0\res
+com.wellness.tracker-startup-runtime-1.1.1-16 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\53c11a74f0c48b7e6fa95d6e97d62221\transformed\startup-runtime-1.1.1\res
+com.wellness.tracker-room-ktx-2.5.0-17 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\619ba903ebec18b3d2dbf96a1e01fa61\transformed\room-ktx-2.5.0\res
+com.wellness.tracker-coordinatorlayout-1.1.0-18 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\641f686de5033d5493fd23db9833c21d\transformed\coordinatorlayout-1.1.0\res
+com.wellness.tracker-appcompat-resources-1.6.1-19 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\6a4c10b8051f0edd4d12774f3dc7fc55\transformed\appcompat-resources-1.6.1\res
+com.wellness.tracker-core-runtime-2.2.0-20 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\6d5452982ebcd0715cb6f94161aaf112\transformed\core-runtime-2.2.0\res
+com.wellness.tracker-sqlite-framework-2.3.0-21 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\6e920f54815cc5d978a232cad2f8b67b\transformed\sqlite-framework-2.3.0\res
+com.wellness.tracker-lifecycle-viewmodel-ktx-2.6.2-22 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\71817bff196f38bb7d609130adc469f1\transformed\lifecycle-viewmodel-ktx-2.6.2\res
+com.wellness.tracker-navigation-runtime-2.7.6-23 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\736599ca5d401ffc5d4a02dc98f6d55d\transformed\navigation-runtime-2.7.6\res
+com.wellness.tracker-navigation-fragment-ktx-2.7.6-24 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\755f3b1f3682cbf1e6a1d6fccf2d6f92\transformed\navigation-fragment-ktx-2.7.6\res
+com.wellness.tracker-lifecycle-service-2.6.2-25 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\7e0bc1c6ec5513ef1d18ffcff9029e7b\transformed\lifecycle-service-2.6.2\res
+com.wellness.tracker-annotation-experimental-1.3.0-26 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\89115ee02c5c8e57d4358ebec90cbef5\transformed\annotation-experimental-1.3.0\res
+com.wellness.tracker-appcompat-1.6.1-27 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\8c6aad3670b9b0e04ad09dc18a3d947d\transformed\appcompat-1.6.1\res
+com.wellness.tracker-viewpager2-1.0.0-28 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\91b4746fd38552cf687d6eb8c1504543\transformed\viewpager2-1.0.0\res
+com.wellness.tracker-emoji2-views-helper-1.2.0-29 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\92e2c0a7dac3845b1bffa22e105f293a\transformed\emoji2-views-helper-1.2.0\res
+com.wellness.tracker-lifecycle-runtime-2.6.2-30 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\95e372e0d9a5b9e9d7b92a2d1bce9765\transformed\lifecycle-runtime-2.6.2\res
+com.wellness.tracker-navigation-common-2.7.6-31 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\a365a80eae38d0a282c855f1e3bd8511\transformed\navigation-common-2.7.6\res
+com.wellness.tracker-navigation-ui-ktx-2.7.6-32 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\a823a88875ec9bc68a0a9cf86b0a09bf\transformed\navigation-ui-ktx-2.7.6\res
+com.wellness.tracker-material-1.11.0-33 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\af4953c81fab549623f2f130a3facdf5\transformed\material-1.11.0\res
+com.wellness.tracker-room-runtime-2.5.0-34 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\b00edb266caf80b43df840e69b7587cb\transformed\room-runtime-2.5.0\res
+com.wellness.tracker-lifecycle-livedata-core-ktx-2.6.2-35 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\b7a3f817bb4ba48f057c19e69874c9fe\transformed\lifecycle-livedata-core-ktx-2.6.2\res
+com.wellness.tracker-fragment-ktx-1.6.2-36 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\ba055040b2fe8ec9307cb35f63b224f0\transformed\fragment-ktx-1.6.2\res
+com.wellness.tracker-lifecycle-runtime-ktx-2.6.2-37 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\c23105cd48afed973acb39746ce9be8c\transformed\lifecycle-runtime-ktx-2.6.2\res
+com.wellness.tracker-sqlite-2.3.0-38 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\c342b0a0701a7eed2feefe5e1fa20225\transformed\sqlite-2.3.0\res
+com.wellness.tracker-emoji2-1.2.0-39 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\c9b5b313bff902e7b6c54a97f54db7f2\transformed\emoji2-1.2.0\res
+com.wellness.tracker-savedstate-ktx-1.2.1-40 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\d14bf441b1830aaeea01d429b27c6b1b\transformed\savedstate-ktx-1.2.1\res
+com.wellness.tracker-profileinstaller-1.3.0-41 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\d4d4cf2fcacff4759ef785f05cab6d69\transformed\profileinstaller-1.3.0\res
+com.wellness.tracker-recyclerview-1.1.0-42 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\d72ad2c930bac24ff8e84c47b94c5783\transformed\recyclerview-1.1.0\res
+com.wellness.tracker-navigation-common-ktx-2.7.6-43 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\d9c4b4a980b8112959567c00ee997c44\transformed\navigation-common-ktx-2.7.6\res
+com.wellness.tracker-core-1.12.0-44 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\dd73c8b7bed79fe73c67550332ca78ce\transformed\core-1.12.0\res
+com.wellness.tracker-lifecycle-viewmodel-savedstate-2.6.2-45 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\de46811a36200970cc2afe4b2174c748\transformed\lifecycle-viewmodel-savedstate-2.6.2\res
+com.wellness.tracker-transition-1.4.1-46 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\de8866fbfe8ea48b7bf32baa6dc99fdd\transformed\transition-1.4.1\res
+com.wellness.tracker-navigation-ui-2.7.6-47 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\e2e4318900d905165fa648023a93079a\transformed\navigation-ui-2.7.6\res
+com.wellness.tracker-fragment-1.6.2-48 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\edf1e68e950d390bc67b1639ac867d93\transformed\fragment-1.6.2\res
+com.wellness.tracker-navigation-fragment-2.7.6-49 C:\Users\Wishwa Dilshan\.gradle\caches\9.0-milestone-1\transforms\f9ef44baba8522e81d69ee7a2f2c4b67\transformed\navigation-fragment-2.7.6\res
+com.wellness.tracker-pngs-50 D:\WellnessJourney-app\build\generated\res\pngs\debug
+com.wellness.tracker-resValues-51 D:\WellnessJourney-app\build\generated\res\resValues\debug
+com.wellness.tracker-packageDebugResources-52 D:\WellnessJourney-app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.wellness.tracker-packageDebugResources-53 D:\WellnessJourney-app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.wellness.tracker-merged_res-54 D:\WellnessJourney-app\build\intermediates\merged_res\debug
+com.wellness.tracker-debug-55 D:\WellnessJourney-app\src\debug\res
+com.wellness.tracker-main-56 D:\WellnessJourney-app\src\main\res
