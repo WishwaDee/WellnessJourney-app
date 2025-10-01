@@ -4,9 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.wellness.app.fragments.DashboardFragment
 import com.wellness.app.fragments.HabitsFragment
+import com.wellness.app.fragments.HydrationFragment
 import com.wellness.app.fragments.MoodJournalFragment
-import com.wellness.app.fragments.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,16 +21,20 @@ class MainActivity : AppCompatActivity() {
 
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_habits -> {
-                    loadFragment(HabitsFragment())
+                R.id.nav_dashboard -> {
+                    loadFragment(DashboardFragment())
                     true
                 }
                 R.id.nav_mood -> {
                     loadFragment(MoodJournalFragment())
                     true
                 }
-                R.id.nav_settings -> {
-                    loadFragment(SettingsFragment())
+                R.id.nav_hydration -> {
+                    loadFragment(HydrationFragment())
+                    true
+                }
+                R.id.nav_habits -> {
+                    loadFragment(HabitsFragment())
                     true
                 }
                 else -> false
@@ -37,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (savedInstanceState == null) {
-            loadFragment(HabitsFragment())
+            bottomNav.selectedItemId = R.id.nav_dashboard
         }
     }
 

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_background"
+    android:clipToPadding="false"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_header_dashboard"
+            android:padding="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.Wellness.Body"
+                        android:text="Welcome back"
+                        android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/dashboardDate"
+                    style="@style/TextAppearance.Wellness.TitleLarge"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@android:color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextAppearance.Wellness.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Build better habits and stay hydrated"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-48dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        style="@style/TextAppearance.Wellness.TitleSmall"
+                        android:text="Today's Progress"
+                        android:textColor="@color/text_primary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/Widget.Wellness.HabitIcon"
+                                android:text="🧭" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextAppearance.Wellness.Body"
+                                    android:text="Habits"
+                                    android:textColor="@color/text_primary" />
+
+                                <TextView
+                                    android:id="@+id/dashboardHabitsProgressLabel"
+                                    style="@style/TextAppearance.Wellness.Caption"
+                                    android:textColor="@color/text_secondary" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/dashboardHabitsProgress"
+                            style="@style/Widget.MaterialComponents.LinearProgressIndicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="12dp"
+                            app:indicatorColor="@color/habit_indicator"
+                            app:trackColor="@color/habit_track"
+                            app:trackCornerRadius="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/Widget.Wellness.HabitIcon"
+                                android:text="💧" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextAppearance.Wellness.Body"
+                                    android:text="Hydration"
+                                    android:textColor="@color/text_primary" />
+
+                                <TextView
+                                    android:id="@+id/dashboardHydrationProgressLabel"
+                                    style="@style/TextAppearance.Wellness.Caption"
+                                    android:textColor="@color/text_secondary" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/dashboardHydrationProgress"
+                            style="@style/Widget.MaterialComponents.LinearProgressIndicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="12dp"
+                            app:indicatorColor="@color/hydration_indicator"
+                            app:trackColor="@color/hydration_track"
+                            app:trackCornerRadius="16dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                style="@style/TextAppearance.Wellness.SectionLabel"
+                android:layout_marginTop="24dp"
+                android:text="Quick Stats" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:columnCount="2"
+                android:columnOrderPreserved="false"
+                android:rowOrderPreserved="false">
+
+                <include layout="@layout/item_dashboard_stat"
+                    android:id="@+id/statMood"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="8dp" />
+
+                <include layout="@layout/item_dashboard_stat"
+                    android:id="@+id/statWater"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="8dp" />
+
+                <include layout="@layout/item_dashboard_stat"
+                    android:id="@+id/statHabits"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp" />
+
+                <include layout="@layout/item_dashboard_stat"
+                    android:id="@+id/statStreak"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp" />
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/dashboardMoodEmoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="🙂"
+                android:textSize="48sp" />
+
+            <TextView
+                android:id="@+id/dashboardMoodLabel"
+                style="@style/TextAppearance.Wellness.Body"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/dashboardWaterText"
+                style="@style/TextAppearance.Wellness.Body"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/dashboardHabitsDoneText"
+                style="@style/TextAppearance.Wellness.Body"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/dashboardStreakText"
+                style="@style/TextAppearance.Wellness.Body"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dashboardResetButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/dashboard_reset" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

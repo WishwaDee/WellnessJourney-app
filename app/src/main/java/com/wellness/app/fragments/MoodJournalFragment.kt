@@ -1,38 +1,45 @@
 package com.wellness.app.fragments
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.GridLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
 import com.wellness.app.R
 import com.wellness.app.adapters.MoodAdapter
 import com.wellness.app.models.MoodEmojis
 import com.wellness.app.models.MoodEntry
 import com.wellness.app.utils.DataManager
-import java.util.*
+import java.util.UUID
 
 class MoodJournalFragment : Fragment() {
 
     private lateinit var dataManager: DataManager
     private lateinit var moodAdapter: MoodAdapter
     private lateinit var recyclerView: RecyclerView
-    private lateinit var fabAddMood: FloatingActionButton
+    private lateinit var moodChipGroup: ChipGroup
+    private lateinit var moodNoteInput: TextInputEditText
+    private lateinit var saveButton: MaterialButton
+    private lateinit var cancelButton: MaterialButton
+    private lateinit var emptyState: TextView
     private val moods = mutableListOf<MoodEntry>()
+
+    private var selectedEmoji: String? = null
+    private var selectedMoodName: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         return inflater.inflate(R.layout.fragment_mood_journal, container, false)
     }
@@ -43,14 +50,19 @@ class MoodJournalFragment : Fragment() {
         dataManager = DataManager(requireContext())
 
         recyclerView = view.findViewById(R.id.moodRecyclerView)
-        fabAddMood = view.findViewById(R.id.fabAddMood)
+        moodChipGroup = view.findViewById(R.id.moodChipGroup)
+        moodNoteInput = view.findViewById(R.id.moodNoteInput)
+        saveButton = view.findViewById(R.id.moodSaveButton)
+        cancelButton = view.findViewById(R.id.moodCancelButton)
+        emptyState = view.findViewById(R.id.moodEmptyState)
 
         setupRecyclerView()
+        populateMoodChips()
         loadMoods()
 
-        fabAddMood.setOnClickListener {
-            showAddMoodDialog()
-        }
+        saveButton.setOnClickListener { submitMood() }
+        cancelButton.setOnClickListener { resetMoodForm() }
+        updateSaveButtonState()
     }
 
     private fun setupRecyclerView() {
@@ -65,66 +77,74 @@ class MoodJournalFragment : Fragment() {
         }
     }
 
+    private fun populateMoodChips() {
+        moodChipGroup.removeAllViews()
+        MoodEmojis.moods.forEach { (emoji, name) ->
+            val chip = LayoutInflater.from(requireContext())
+                .inflate(R.layout.item_mood_chip, moodChipGroup, false) as Chip
+            chip.text = "$emoji  $name"
+            chip.tag = Pair(emoji, name)
+            moodChipGroup.addView(chip)
+        }
+
+        moodChipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
+            if (checkedIds.isNotEmpty()) {
+                val chip = group.findViewById<Chip>(checkedIds[0])
+                val tag = chip.tag as? Pair<*, *>
+                selectedEmoji = tag?.first as? String
+                selectedMoodName = tag?.second as? String
+            } else {
+                selectedEmoji = null
+                selectedMoodName = null
+            }
+            updateSaveButtonState()
+        }
+    }
+
+    private fun updateSaveButtonState() {
+        saveButton.isEnabled = !selectedEmoji.isNullOrEmpty()
+    }
+
     private fun loadMoods() {
         moods.clear()
         moods.addAll(dataManager.getMoodEntries().sortedByDescending { it.timestamp })
         moodAdapter.notifyDataSetChanged()
+        updateEmptyState()
     }
 
     private fun saveMoods() {
         dataManager.saveMoodEntries(moods)
+        updateEmptyState()
     }
 
-    private fun showAddMoodDialog() {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_add_mood, null)
-        val emojiGrid = dialogView.findViewById<GridLayout>(R.id.emojiGrid)
-        val noteInput = dialogView.findViewById<EditText>(R.id.moodNoteInput)
+    private fun updateEmptyState() {
+        emptyState.visibility = if (moods.isEmpty()) View.VISIBLE else View.GONE
+    }
 
-        var selectedEmoji = ""
-        var selectedMoodName = ""
+    private fun submitMood() {
+        val emoji = selectedEmoji ?: return
+        val name = selectedMoodName ?: return
+        val note = moodNoteInput.text?.toString()?.trim().orEmpty()
 
-        MoodEmojis.moods.forEach { (emoji, name) ->
-            val emojiCard = layoutInflater.inflate(R.layout.item_emoji, emojiGrid, false) as CardView
-            val emojiText = emojiCard.findViewById<TextView>(R.id.emojiText)
-            emojiText.text = emoji
+        val moodEntry = MoodEntry(
+            id = UUID.randomUUID().toString(),
+            emoji = emoji,
+            moodName = name,
+            note = note
+        )
+        moods.add(0, moodEntry)
+        saveMoods()
+        moodAdapter.notifyItemInserted(0)
+        recyclerView.smoothScrollToPosition(0)
+        resetMoodForm()
+    }
 
-            emojiCard.setOnClickListener {
-                selectedEmoji = emoji
-                selectedMoodName = name
-
-                for (i in 0 until emojiGrid.childCount) {
-                    (emojiGrid.getChildAt(i) as? CardView)?.setCardBackgroundColor(
-                        resources.getColor(android.R.color.white, null)
-                    )
-                }
-                emojiCard.setCardBackgroundColor(
-                    resources.getColor(R.color.mood_selected, null)
-                )
-            }
-
-            emojiGrid.addView(emojiCard)
-        }
-
-        AlertDialog.Builder(requireContext())
-            .setTitle("Log Your Mood")
-            .setView(dialogView)
-            .setPositiveButton("Save") { _, _ ->
-                if (selectedEmoji.isNotEmpty()) {
-                    val note = noteInput.text.toString().trim()
-                    val moodEntry = MoodEntry(
-                        id = UUID.randomUUID().toString(),
-                        emoji = selectedEmoji,
-                        moodName = selectedMoodName,
-                        note = note
-                    )
-                    moods.add(0, moodEntry)
-                    saveMoods()
-                    moodAdapter.notifyItemInserted(0)
-                    recyclerView.smoothScrollToPosition(0)
-                }
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
+    private fun resetMoodForm() {
+        moodChipGroup.clearCheck()
+        selectedEmoji = null
+        selectedMoodName = null
+        moodNoteInput.setText("")
+        updateSaveButtonState()
     }
 
     private fun showMoodDetailsDialog(mood: MoodEntry) {
@@ -137,33 +157,40 @@ class MoodJournalFragment : Fragment() {
             }
         }
 
-        AlertDialog.Builder(requireContext())
-            .setTitle("Mood Entry")
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.mood_entry_title)
             .setMessage(message)
-            .setPositiveButton("Share") { _, _ ->
+            .setPositiveButton(R.string.action_share) { _, _ ->
                 shareMood(mood)
             }
-            .setNegativeButton("Delete") { _, _ ->
+            .setNegativeButton(R.string.action_delete) { _, _ ->
                 deleteMood(mood)
             }
-            .setNeutralButton("Close", null)
+            .setNeutralButton(R.string.action_close, null)
             .show()
     }
 
     private fun shareMood(mood: MoodEntry) {
-        val shareText = "My mood on ${mood.getFormattedDate()}: ${mood.emoji} ${mood.moodName}"
+        val shareText = getString(
+            R.string.mood_share_format,
+            mood.getFormattedDate(),
+            mood.emoji,
+            mood.moodName
+        )
         val shareIntent = Intent().apply {
             action = Intent.ACTION_SEND
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, shareText)
         }
-        startActivity(Intent.createChooser(shareIntent, "Share mood via"))
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.mood_share_chooser)))
     }
 
     private fun deleteMood(mood: MoodEntry) {
         val position = moods.indexOf(mood)
-        moods.remove(mood)
-        saveMoods()
-        moodAdapter.notifyItemRemoved(position)
+        if (position >= 0) {
+            moods.removeAt(position)
+            saveMoods()
+            moodAdapter.notifyItemRemoved(position)
+        }
     }
 }
