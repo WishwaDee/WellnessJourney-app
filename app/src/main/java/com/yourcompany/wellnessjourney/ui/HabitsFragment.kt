@@ -21,7 +21,6 @@ import com.yourcompany.wellnessjourney.R
 import com.yourcompany.wellnessjourney.adapters.HabitAdapter
 import com.yourcompany.wellnessjourney.data.Habit
 import com.yourcompany.wellnessjourney.data.HabitManager // We'll create this soon!
-import java.util.UUID
 
 class HabitsFragment : Fragment(R.layout.fragment_habits)
 {
