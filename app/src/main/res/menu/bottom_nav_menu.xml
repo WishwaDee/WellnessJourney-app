@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_habits"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:title="@string/nav_habits"/>
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_nav_dashboard"
+        android:title="@string/nav_dashboard" />
     <item
         android:id="@+id/nav_mood"
-        android:icon="@android:drawable/ic_menu_info_details"
-        android:title="@string/nav_mood"/>
+        android:icon="@drawable/ic_nav_mood"
+        android:title="@string/nav_mood" />
     <item
-        android:id="@+id/nav_settings"
-        android:icon="@android:drawable/ic_menu_preferences"
-        android:title="@string/nav_settings"/>
+        android:id="@+id/nav_hydration"
+        android:icon="@drawable/ic_nav_hydration"
+        android:title="@string/nav_hydration" />
+    <item
+        android:id="@+id/nav_habits"
+        android:icon="@drawable/ic_nav_habits"
+        android:title="@string/nav_habits" />
 </menu>
