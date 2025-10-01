@@ -1,5 +1,6 @@
 package com.yourcompany.wellnessjourney.ui // Your actual package name (likely includes .ui)
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +23,8 @@ import com.yourcompany.wellnessjourney.data.Habit
 import com.yourcompany.wellnessjourney.data.HabitManager // We'll create this soon!
 import java.util.UUID
 
-class HabitsFragment : Fragment() {
+class HabitsFragment : Fragment(R.layout.fragment_habits)
+{
 
     private lateinit var recyclerViewHabits: RecyclerView
     private lateinit var textNoHabits: TextView

@@ -1,5 +1,6 @@
 package com.yourcompany.wellnessjourney.ui // Your actual package name (likely includes .ui)
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+
 import androidx.fragment.app.Fragment
 import com.yourcompany.wellnessjourney.R
 import com.yourcompany.wellnessjourney.data.Habit
@@ -18,7 +20,8 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(R.layout.fragment_dashboard)
+ {
 
     private lateinit var textCurrentDate: TextView
     private lateinit var progressHabits: ProgressBar
@@ -185,3 +188,4 @@ class DashboardFragment : Fragment() {
         }
     }
 }
+

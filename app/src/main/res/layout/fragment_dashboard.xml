@@ -36,6 +36,13 @@
         android:id="@+id/text_current_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_gravity="center"
+        android:text="@string/dashboard_screen_title"
+        android:textSize="24sp" />
+
+</FrameLayout>
+
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         tools:text="Tuesday, September 30, 2025"

@@ -53,6 +53,14 @@
         android:id="@+id/fab_add_habit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_gravity="center"
+        android:text="@string/daily_habits_screen_title"
+        android:textSize="24sp" />
+
+</FrameLayout>
+
+
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
@@ -128,3 +136,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
