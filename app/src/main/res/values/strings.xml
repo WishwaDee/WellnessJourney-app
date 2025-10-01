@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">WellnessJourney</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Add other existing strings here if any -->
+
+    <string-array name="habit_icons_array">
+        <item>No Icon (Default)</item>
+        <item>Exercise Icon</item>
+        <item>Water Icon</item>
+        <item>Read Icon</item>
+        <item>Sleep Icon</item>
+        <item>Meditation Icon</item>
+        <!-- Add more descriptive icons as you add drawables for them -->
+    </string-array>
 </resources>
