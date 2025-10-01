@@ -27,7 +27,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_habits"
-            android:tint="@color/text_dark"/>
+            app:tint="@color/text_dark"
+            android:contentDescription="@string/content_desc_habit_icon" />
 
         <TextView
             android:id="@+id/habit_name"

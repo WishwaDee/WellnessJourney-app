@@ -1,42 +1,32 @@
-package com.yourcompany.wellnessjourney
+package com.yourcompany.wellnessjourney // <<< YOUR ACTUAL PACKAGE NAME
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yourcompany.wellnessjourney.R
-import com.yourcompany.wellnessjourney.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
+    private lateinit var navController: NavController // Declare navController here
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        val navController = (supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment)
-            ?.navController
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+            ?: throw IllegalStateException("NavHostFragment not found")
+        navController = navHostFragment.navController // Initialize it
 
-
-        if (navController == null) {
-            Log.e(TAG, "NavHostFragment not found; bottom navigation disabled.")
-            binding.bottomNavView.visibility = View.GONE
-            binding.bottomNavView.isEnabled = false
-            return
-        }
-
-        binding.bottomNavView.setupWithNavController(navController)
+        val navView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
+        navView.setupWithNavController(navController)
     }
 
-    companion object {
-        private const val TAG = "MainActivity"
+    // Public method to access NavController from fragments
+    fun getNavController(): NavController {
+        return navController
     }
 }
-

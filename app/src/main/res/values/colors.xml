@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Existing colors should be here -->
+    <!-- Primary Material You inspired colors -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
+    <!-- Basic Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#6252DA</color>  <!-- Example for top background -->
-    <color name="colorPrimaryVariant">#6252DA</color>
-    <color name="colorAccent">#A7EBFB</color>   <!-- Example for contrast / light elements -->
+    <!-- App-wide primary and accent colors (customizable) -->
+    <color name="colorPrimary">#6252DA</color>  <!-- A vibrant primary blue-purple -->
+    <color name="colorPrimaryVariant">#4539AC</color> <!-- Darker variant for status bar -->
+    <color name="colorOnPrimary">#FFFFFF</color>  <!-- Text color on primary background -->
+
+    <color name="colorSecondary">#A7EBFB</color>   <!-- A lighter, contrasting accent blue -->
+    <color name="colorSecondaryVariant">#80DEEA</color>
+    <color name="colorOnSecondary">#212121</color> <!-- Text color on secondary background -->
+
+    <!-- Common UI colors -->
+    <color name="background_light">#F5F5F5</color> <!-- General background color -->
+    <color name="text_dark">#212121</color>        <!-- Dark text for light backgrounds -->
+    <color name="text_light">#757575</color>       <!-- Lighter text for general information -->
+    <color name="divider_color">#E0E0E0</color>    <!-- Subtle divider lines -->
 
     <!-- Dashboard Specific Colors -->
-    <color name="dashboard_background_gradient_start">#6252DA</color> <!-- A deep purple/blue -->
-    <color name="dashboard_background_gradient_end">#A7EBFB</color>   <!-- A lighter blue -->
+    <color name="dashboard_background_gradient_start">#6252DA</color>
+    <color name="dashboard_background_gradient_end">#A7EBFB</color>
     <color name="card_background">#FFFFFF</color>
-    <color name="text_dark">#212121</color>
-    <color name="text_light">#757575</color>
-    <color name="progress_ring_bg">#E0E0E0</color>
-    <color name="progress_ring_fg_habits">#4CAF50</color> <!-- Green for habits progress -->
-    <color name="progress_ring_fg_hydration">#2196F3</color> <!-- Blue for hydration progress -->
-    <color name="quick_stat_bg_mood">#FFCDD2</color>  <!-- Light red for mood -->
-    <color name="quick_stat_bg_water">#BBDEFB</color> <!-- Light blue for water -->
-    <color name="quick_stat_bg_habits_done">#C8E6C9</color> <!-- Light green for habits done -->
-    <color name="quick_stat_bg_streak">#FFECB3</color> <!-- Light yellow for streak -->
 
-    <!-- Bottom Navigation related colors -->
+    <!-- Progress Ring Colors -->
+    <color name="progress_ring_bg">#E0E0E0</color>
+    <color name="progress_ring_fg_habits">#4CAF50</color>   <!-- Green for habits -->
+    <color name="progress_ring_fg_hydration">#2196F3</color> <!-- Blue for hydration -->
+
+    <!-- Quick Stat Card Backgrounds -->
+    <color name="quick_stat_bg_mood">#FFF8E1</color>    <!-- Very light yellow -->
+    <color name="quick_stat_bg_water">#E3F2FD</color>   <!-- Very light blue -->
+    <color name="quick_stat_bg_habits_done">#E8F5E9</color> <!-- Very light green -->
+    <color name="quick_stat_bg_streak">#FFFDE7</color>  <!-- Very light cream -->
+
+    <!-- Bottom Navigation specific colors -->
     <color name="bottom_nav_item_selected">@color/colorPrimary</color>
     <color name="bottom_nav_item_unselected">#757575</color>
 

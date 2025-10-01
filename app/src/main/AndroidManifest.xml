@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WellnessJourney"> <!-- <<< Make sure your theme is XML based -->
+        android:theme="@style/Theme.WellnessJourney"> <!-- <<< Make sure this is your XML-based theme -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
