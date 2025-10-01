@@ -1,24 +1,38 @@
-package com.yourcompany.wellnessjourney // <<< YOUR CORRECT PACKAGE NAME
+package com.yourcompany.wellnessjourney
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.yourcompany.wellnessjourney.R // <<< YOUR CORRECT R FILE IMPORT
+import com.yourcompany.wellnessjourney.R
+import com.yourcompany.wellnessjourney.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val navView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
+        val navController = (supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment)
+            ?.navController
 
-        // The error indicates this line: MainActivity.kt:20
-        // It means 'nav_host_fragment' is not yet inflated or configured properly
-        val navController = findNavController(R.id.nav_host_fragment)
+        if (navController == null) {
+            Log.e(TAG, "NavHostFragment not found; bottom navigation disabled.")
+            binding.bottomNavView.visibility = View.GONE
+            binding.bottomNavView.isEnabled = false
+            return
+        }
 
-        navView.setupWithNavController(navController)
+        binding.bottomNavView.setupWithNavController(navController)
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }

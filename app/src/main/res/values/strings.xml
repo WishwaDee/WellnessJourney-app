@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">WellnessJourney</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dashboard_screen_title">Dashboard Screen</string>
+    <string name="mood_journal_screen_title">Mood Journal Screen</string>
+    <string name="hydration_tracker_screen_title">Hydration Tracker Screen</string>
+    <string name="daily_habits_screen_title">Daily Habits Screen</string>
 </resources>

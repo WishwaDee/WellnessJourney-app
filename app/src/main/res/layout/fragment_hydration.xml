@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Hydration Tracker Screen"
+        android:text="@string/hydration_tracker_screen_title"
         android:textSize="24sp" />
 
 </FrameLayout>
+
