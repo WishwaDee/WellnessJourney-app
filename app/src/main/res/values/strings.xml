@@ -1,7 +1,22 @@
 <resources>
     <string name="app_name">WellnessJourney</string>
+
     <string name="dashboard_screen_title">Dashboard Screen</string>
     <string name="mood_journal_screen_title">Mood Journal Screen</string>
     <string name="hydration_tracker_screen_title">Hydration Tracker Screen</string>
     <string name="daily_habits_screen_title">Daily Habits Screen</string>
 </resources>
+
+    <!-- Add other existing strings here if any -->
+
+    <string-array name="habit_icons_array">
+        <item>No Icon (Default)</item>
+        <item>Exercise Icon</item>
+        <item>Water Icon</item>
+        <item>Read Icon</item>
+        <item>Sleep Icon</item>
+        <item>Meditation Icon</item>
+        <!-- Add more descriptive icons as you add drawables for them -->
+    </string-array>
+</resources>
+

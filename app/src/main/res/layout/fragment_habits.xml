@@ -1,17 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_light"
     tools:context=".ui.HabitsFragment">
 
     <TextView
-        android:id="@+id/text_habits"
+        android:id="@+id/text_habits_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Daily Habits"
+        android:textColor="@color/text_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- RecyclerView to display the list of habits -->
+    <!-- ********* THIS IS LINE 30, COLUMN 38 ********* -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_habits"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/text_habits_title"
+    tools:listitem="@layout/item_habit" />
+    <TextView
+        android:id="@+id/text_no_habits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="No habits added yet. Click '+' to add one!"
+        android:visibility="gone"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:textColor="@color/text_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_habits_title" />
+
+    <!-- Floating Action Button to add new habits -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_habit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
         android:layout_gravity="center"
         android:text="@string/daily_habits_screen_title"
         android:textSize="24sp" />
 
 </FrameLayout>
+
+
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="@color/colorPrimary"
+        app:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_add"
+        android:contentDescription="Add New Habit" />
+
+    <!-- Habit Building Tips Section -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_habit_tips"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"> <!-- Hide initially, show when no habits maybe -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Habit Building Tips"
+                android:textColor="@color/text_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:android_height="wrap_content"
+                android:drawableStart="@drawable/ic_small_target"
+                android:drawablePadding="8dp"
+                android:text="Start small - even 5 minutes counts as progress"
+                android:textColor="@color/text_light"
+                android:layout_marginBottom="4dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_small_calendar"
+                android:drawablePadding="8dp"
+                android:text="Consistency beats perfection - aim for daily practice"
+                android:textColor="@color/text_light"
+                android:layout_marginBottom="4dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_small_link"
+                android:drawablePadding="8dp"
+                android:text="Stack new habits with existing routines"
+                android:textColor="@color/text_light"
+                android:layout_marginBottom="4dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_small_star"
+                android:drawablePadding="8dp"
+                android:text="Celebrate small wins to build momentum"
+                android:textColor="@color/text_light"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
