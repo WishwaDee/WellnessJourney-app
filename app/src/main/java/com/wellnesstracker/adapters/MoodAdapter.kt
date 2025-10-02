@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wellnesstracker.databinding.ItemMoodBinding
+import com.wellnesstracker.models.MoodEntry
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,7 +20,7 @@ class MoodAdapter(
         fun bind(mood: MoodEntry) {
             binding.textEmoji.text = mood.emoji
             binding.textMoodName.text = mood.moodName
-            binding.textNote.text = mood.note
+            binding.textNote.text = mood.note.orEmpty()
             binding.textNote.visibility = if (mood.note.isNullOrEmpty()) View.GONE else View.VISIBLE
 
             val sdf = SimpleDateFormat("MMM dd, yyyy - hh:mm a", Locale.getDefault())

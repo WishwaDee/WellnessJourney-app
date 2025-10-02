@@ -3,10 +3,11 @@ package com.wellnesstracker
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.wellnesstracker.R
 import com.wellnesstracker.databinding.ActivityMainBinding
 import com.wellnesstracker.fragments.DashboardFragment
 import com.wellnesstracker.fragments.HabitsFragment
-import com.wellnesstracker.fragments.DashboardFragment
+import com.wellnesstracker.fragments.HydrationFragment
 import com.wellnesstracker.fragments.MoodJournalFragment
 
 
@@ -19,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupBottomNavigation()
-
 
         if (savedInstanceState == null) {
             binding.bottomNavigation.selectedItemId = R.id.nav_dashboard

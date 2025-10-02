@@ -1,10 +1,10 @@
 package com.wellnesstracker.fragments
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -13,6 +13,7 @@ import com.google.android.material.chip.Chip
 import com.wellnesstracker.R
 import com.wellnesstracker.adapters.MoodAdapter
 import com.wellnesstracker.databinding.FragmentMoodJournalBinding
+import com.wellnesstracker.models.MoodEntry
 import com.wellnesstracker.utils.DataManager
 
 class MoodJournalFragment : Fragment() {
@@ -34,19 +35,19 @@ class MoodJournalFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         dataManager = DataManager(requireContext())
 
         setupMoodChips()
         setupRecyclerView()
         setupActions()
-        updateEmptyState()
+        refreshMoods()
     }
 
     override fun onResume() {
         super.onResume()
         refreshMoods()
     }
+
     private fun setupMoodChips() {
         val moods = listOf(
             MoodPreset("😊", getString(R.string.mood_happy)),
@@ -80,28 +81,27 @@ class MoodJournalFragment : Fragment() {
                 refreshMoods()
                 Toast.makeText(requireContext(), R.string.mood_deleted, Toast.LENGTH_SHORT).show()
             }
-
         )
 
         binding.recyclerRecentMoods.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = moodAdapter
         }
-
-        private fun setupActions() {
-            binding.buttonSaveMood.setOnClickListener {
-                saveMoodEntry()
-        }
-
-            binding.buttonClear.setOnClickListener {
-                binding.chipGroupMoods.clearCheck()
-                binding.inputNote.text = null
-        }
     }
 
+    private fun setupActions() {
+        binding.buttonSaveMood.setOnClickListener { saveMoodEntry() }
+
+        binding.buttonClear.setOnClickListener {
+            binding.chipGroupMoods.clearCheck()
+            binding.inputNote.text = null
+        }
+
         binding.buttonAddMood.setOnClickListener {
+            (binding.root as? ScrollView)?.post {
+                (binding.root as? ScrollView)?.smoothScrollTo(0, binding.inputLayoutNote.top)
+            }
             binding.chipGroupMoods.requestFocus()
-            binding.chipGroupMoods.performClick()
         }
     }
 
@@ -118,20 +118,26 @@ class MoodJournalFragment : Fragment() {
         val mood = MoodEntry(
             emoji = preset.emoji,
             moodName = preset.label,
-            note = note,
+            note = note.ifEmpty { null },
             date = dataManager.getTodayDate()
         )
 
-        val shareIntent = Intent(Intent.ACTION_SEND).apply {
-            type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, summary)
-            putExtra(Intent.EXTRA_SUBJECT, "My Mood Journal")
-        }
-        startActivity(Intent.createChooser(shareIntent, "Share Mood Summary"))
+        dataManager.addMood(mood)
+        Toast.makeText(requireContext(), R.string.mood_saved, Toast.LENGTH_SHORT).show()
+
+        binding.chipGroupMoods.clearCheck()
+        binding.inputNote.text = null
+
+        refreshMoods()
     }
 
-    private fun updateEmptyState() {
-        val hasMoods = dataManager.getMoods().isNotEmpty()
+    private fun refreshMoods() {
+        val moods = dataManager.getMoods()
+        moodAdapter.updateMoods(moods)
+        updateEmptyState(moods.isNotEmpty())
+    }
+
+    private fun updateEmptyState(hasMoods: Boolean) {
         binding.recyclerRecentMoods.isVisible = hasMoods
         binding.textEmptyState.isVisible = !hasMoods
     }

@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken
 import com.wellnesstracker.models.Habit
 import com.wellnesstracker.models.HabitCompletion
 import com.wellnesstracker.models.HydrationEntry
+import com.wellnesstracker.models.MoodEntry
 import java.text.SimpleDateFormat
 import java.util.*
 

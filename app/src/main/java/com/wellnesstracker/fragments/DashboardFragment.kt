@@ -4,134 +4,133 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.view.isVisible
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.material.button.MaterialButton
+import com.wellnesstracker.MainActivity
 import com.wellnesstracker.R
-import com.wellnesstracker.databinding.FragmentHydrationBinding
+import com.wellnesstracker.databinding.FragmentDashboardBinding
 import com.wellnesstracker.utils.DataManager
-import java.text.NumberFormat
+import com.wellnesstracker.utils.SessionManager
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.Calendar
 import java.util.Locale
 
-class HydrationFragment : Fragment() {
+class DashboardFragment : Fragment() {
 
-    private var _binding: FragmentHydrationBinding? = null
+    private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
     private lateinit var dataManager: DataManager
-    private var customAmount = 250
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHydrationBinding.inflate(inflater, container, false)
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataManager = DataManager(requireContext())
+        sessionManager = SessionManager(requireContext())
 
-        setupQuickButtons()
-        setupCustomControls()
-        updateHydrationSummary()
+        setupQuickActions()
+        updateDashboard()
     }
 
     override fun onResume() {
         super.onResume()
+        updateDashboard()
+    }
+
+    private fun setupQuickActions() {
+        binding.cardQuickMood.setOnClickListener { openTab(R.id.nav_mood) }
+        binding.cardQuickWater.setOnClickListener { openTab(R.id.nav_hydration) }
+        binding.cardQuickHabits.setOnClickListener { openTab(R.id.nav_habits) }
+
+        binding.buttonResetOnboarding.setOnClickListener {
+            sessionManager.resetOnboarding()
+            Toast.makeText(
+                requireContext(),
+                R.string.onboarding_reset_message,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun openTab(tabId: Int) {
+        (activity as? MainActivity)?.openTab(tabId)
+    }
+
+    private fun updateDashboard() {
+        updateHeader()
+        updateHabitSummary()
         updateHydrationSummary()
+        updateMoodSummary()
+        updateStreak()
     }
 
-    private fun setupQuickButtons() {
-        val quickButtons: Map<MaterialButton, Int> = mapOf(
-            binding.buttonQuick250 to 250,
-            binding.buttonQuick500 to 500,
-            binding.buttonQuick750 to 750,
-            binding.buttonQuick1000 to 1000,
-            binding.buttonQuickAdd to 250
-        )
-
-        binding.buttonQuickAdd.text = getString(R.string.format_add_amount, 250)
-
-        quickButtons.forEach { (button, amount) ->
-            button.setOnClickListener { addHydration(amount) }
-        }
+    private fun updateHeader() {
+        val dateFormat = SimpleDateFormat("EEEE, MMM d", Locale.getDefault())
+        binding.textTitle.text = getString(R.string.dashboard_title)
+        binding.textDate.text = dateFormat.format(Calendar.getInstance().time)
     }
 
-    private fun setupCustomControls() {
-        updateCustomValue()
+    private fun updateHabitSummary() {
+        val habits = dataManager.getHabits()
+        val completedToday = dataManager.getCompletedHabitsCount()
+        val percentage = dataManager.getTodayCompletionPercentage()
 
-        binding.buttonDecrease.setOnClickListener {
-            customAmount = (customAmount - 50).coerceAtLeast(50)
-            updateCustomValue()
+        binding.textHabitsProgress.text = getString(R.string.format_percentage, percentage)
+        binding.progressHabits.progress = percentage
+
+        if (habits.isEmpty()) {
+            binding.textHabitsRemaining.text = getString(R.string.no_habits_subtitle)
+            binding.textHabitsStat.text = getString(R.string.format_habits_count, 0, 0)
+        } else {
+            binding.textHabitsRemaining.text = getString(
+                R.string.format_habits_remaining,
+                completedToday,
+                habits.size
+            )
+            binding.textHabitsStat.text = getString(
+                R.string.format_habits_count,
+                completedToday,
+                habits.size
+            )
         }
-
-        binding.buttonIncrease.setOnClickListener {
-            customAmount += 50
-            updateCustomValue()
-        }
-
-        binding.buttonAddCustom.setOnClickListener {
-            addHydration(customAmount)
-        }
-    }
-
-    private fun addHydration(amount: Int) {
-        dataManager.addHydrationEntry(amount)
-        updateHydrationSummary()
     }
 
     private fun updateHydrationSummary() {
         val goal = dataManager.getHydrationGoal()
         val total = dataManager.getTodayHydrationTotal()
-        val remaining = (goal - total).coerceAtLeast(0)
         val percentage = dataManager.getHydrationProgressPercentage()
+        val remaining = (goal - total).coerceAtLeast(0)
 
-        binding.textDailyGoal.text = getString(R.string.format_daily_goal, goal)
-        binding.textProgressValue.text = getString(R.string.format_progress_value, total, goal)
+        binding.textHydrationProgress.text = getString(R.string.format_percentage, percentage)
         binding.progressHydration.progress = percentage
-        binding.textRemaining.text = getString(R.string.format_hydration_remaining, remaining)
-
-        updateHistory()
+        binding.textHydrationRemaining.text = getString(R.string.format_hydration_remaining, remaining)
+        binding.textWaterStat.text = getString(R.string.format_progress_value, total, goal)
     }
 
-    private fun updateHistory() {
-        val entries = dataManager.getHydrationEntries().filter {
-            it.date == dataManager.getTodayDate()
-        }
-
-        binding.textNoHistory.isVisible = entries.isEmpty()
-        binding.containerHistory.removeAllViews()
-
-        if (entries.isEmpty()) {
-            return
-        }
-
-        val timeFormatter = SimpleDateFormat("hh:mm a", Locale.getDefault())
-        val numberFormatter = NumberFormat.getIntegerInstance()
-
-        entries.take(5).forEach { entry ->
-            val textView = TextView(requireContext()).apply {
-                text = getString(
-                    R.string.format_history_entry,
-                    numberFormatter.format(entry.amountMl),
-                    timeFormatter.format(Date(entry.timestamp))
-                )
-                setTextColor(resources.getColor(android.R.color.darker_gray, null))
-                textSize = 14f
-                setPadding(0, 8, 0, 8)
-            }
-            binding.containerHistory.addView(textView)
+    private fun updateMoodSummary() {
+        val todayMood = dataManager.getLatestMoodForDate()
+        if (todayMood == null) {
+            binding.textMoodStat.text = getString(R.string.mood_stat_empty)
+        } else {
+            binding.textMoodStat.text = getString(
+                R.string.format_mood_stat,
+                todayMood.emoji,
+                todayMood.moodName
+            )
         }
     }
 
-    private fun updateCustomValue() {
-        binding.textCustomValue.text = customAmount.toString()
-        binding.buttonAddCustom.text = getString(R.string.format_add_amount, customAmount)
+    private fun updateStreak() {
+        val streak = dataManager.getHabitStreak()
+        binding.textStreakStat.text = getString(R.string.format_streak_days, streak)
     }
 
     override fun onDestroyView() {
