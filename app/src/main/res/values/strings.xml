@@ -26,14 +26,14 @@
     <string name="error_email_required">Please enter your email.</string>
     <string name="error_password_required">Please enter your password.</string>
     <string name="error_password_length">Password should be at least 6 characters.</string>
-    <string name="error_invalid_credentials">We couldn&apos;t find a matching account. Try again.</string>
+    <string name="error_invalid_credentials">We couldn’t find a matching account. Try again.</string>
 
     <!-- Dashboard -->
     <string name="dashboard_title">Wellness Dashboard</string>
-    <string name="todays_progress">Today&apos;s Progress</string>
+    <string name="todays_progress">Today’s Progress</string>
     <string name="hydration_progress">Hydration</string>
     <string name="quick_stats">Quick Stats</string>
-    <string name="todays_mood">Today&apos;s Mood</string>
+    <string name="todays_mood">Today’s Mood</string>
     <string name="water_intake">Water Intake</string>
     <string name="habits_done">Habits Done</string>
     <string name="streak_title">Daily Streak</string>
@@ -69,14 +69,14 @@
     <string name="format_streak_days">%1$d days</string>
     <string name="habits_title">Daily Habits</string>
     <string name="habits_subtitle">Build better habits, one day at a time</string>
-    <string name="todays_habits">Today&apos;s habits</string>
+    <string name="todays_habits">Today’s habits</string>
     <string name="no_habits_title">No habits yet</string>
     <string name="no_habits_subtitle">Tap + to add your first habit</string>
 
     <!-- Mood journal -->
     <string name="mood_journal_title">Mood Journal</string>
     <string name="mood_journal_subtitle">Track your emotional wellness</string>
-    <string name="add_todays_mood">Add today&apos;s mood</string>
+    <string name="add_todays_mood">Add today’s mood</string>
     <string name="how_are_you_feeling">How are you feeling?</string>
     <string name="note_optional">Add a note (optional)</string>
     <string name="cancel">Cancel</string>
