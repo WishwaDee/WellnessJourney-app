@@ -1,37 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/widgetLayout"
+    android:id="@+id/widget_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/widget_background"
     android:padding="16dp"
-    android:background="@android:color/white">
+    android:gravity="center">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/widget_label"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Today's Progress"
         android:textSize="14sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@android:color/white"
+        android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/widgetPercentage"
-        android:layout_width="match_parent"
+        android:id="@+id/widget_percentage"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0%"
-        android:textSize="32sp"
+        android:textSize="48sp"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginTop="8dp"/>
 
     <ProgressBar
-        android:id="@+id/widgetProgressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/widget_progress"
         android:layout_width="match_parent"
         android:layout_height="8dp"
+        android:layout_marginTop="12dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/widget_progress"
         android:max="100"
         android:progress="0"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🎯 Keep Going!"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp"/>
 </LinearLayout>
