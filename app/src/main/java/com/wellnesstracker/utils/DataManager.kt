@@ -1,12 +1,12 @@
-package com.yourcompany.wellnesstracker.utils
+package com.wellnesstracker.utils
 
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.yourcompany.wellnesstracker.models.Habit
-import com.yourcompany.wellnesstracker.models.HabitCompletion
-import com.yourcompany.wellnesstracker.models.MoodEntry
+import com.wellnesstracker.models.Habit
+import com.wellnesstracker.models.HabitCompletion
+import com.wellnesstracker.models.MoodEntry
 import java.text.SimpleDateFormat
 import java.util.*
 

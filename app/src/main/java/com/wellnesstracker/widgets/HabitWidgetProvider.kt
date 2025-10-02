@@ -1,4 +1,4 @@
-package com.yourcompany.wellnesstracker.widgets
+package com.wellnesstracker.widgets
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager

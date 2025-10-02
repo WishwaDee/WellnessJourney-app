@@ -1,4 +1,4 @@
-package com.yourcompany.wellnesstracker.adapters
+package com.wellnesstracker.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,4 +1,4 @@
-package com.yourcompany.wellnesstracker.utils
+package com.wellnesstracker.utils
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -8,7 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.work.*
-import com.yourcompany.wellnesstracker.MainActivity
+import com.wellnesstracker.MainActivity
 import com.wellnesstracker.R
 import java.util.concurrent.TimeUnit
 

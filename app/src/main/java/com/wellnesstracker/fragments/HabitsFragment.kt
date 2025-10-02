@@ -1,4 +1,4 @@
-package com.yourcompany.wellnesstracker.fragments
+package com.wellnesstracker.fragments
 
 import android.app.AlertDialog
 import android.appwidget.AppWidgetManager
@@ -10,11 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.yourcompany.wellnesstracker.adapters.HabitAdapter
+import com.wellnesstracker.adapters.HabitAdapter
 import com.wellnesstracker.databinding.FragmentHabitsBinding
-import com.yourcompany.wellnesstracker.dialogs.AddHabitDialog
-import com.yourcompany.wellnesstracker.models.Habit
-import com.yourcompany.wellnesstracker.utils.DataManager
+import com.wellnesstracker.dialogs.AddHabitDialog
+import com.wellnesstracker.models.Habit
+import com.wellnesstracker.utils.DataManager
 import com.wellnesstracker.widgets.HabitWidgetProvider
 
 class HabitsFragment : Fragment() {

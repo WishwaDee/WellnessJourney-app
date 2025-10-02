@@ -1,11 +1,11 @@
-package com.yourcompany.wellnesstracker
+package com.wellnesstracker
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.wellnesstracker.databinding.ActivityMainBinding
-import com.yourcompany.wellnesstracker.fragments.HabitsFragment
-import com.yourcompany.wellnesstracker.fragments.MoodJournalFragment
+import com.wellnesstracker.fragments.HabitsFragment
+import com.wellnesstracker.fragments.MoodJournalFragment
 import com.wellnesstracker.fragments.SettingsFragment
 
 class MainActivity : AppCompatActivity() {

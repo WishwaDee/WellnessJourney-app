@@ -1,4 +1,4 @@
-package com.yourcompany.wellnesstracker.dialogs
+package com.wellnesstracker.dialogs
 
 import android.app.Dialog
 import android.os.Bundle

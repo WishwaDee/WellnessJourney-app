@@ -1,4 +1,4 @@
-package com.yourcompany.wellnesstracker.dialogs
+package com.wellnesstracker.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.wellnesstracker.R
 import com.wellnesstracker.databinding.DialogAddHabitBinding
 import com.wellnesstracker.models.Habit
 

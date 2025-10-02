@@ -1,4 +1,4 @@
-package com.yourcompany.wellnesstracker.fragments
+package com.wellnesstracker.fragments
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -14,9 +14,9 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.wellnesstracker.R
-import com.yourcompany.wellnesstracker.adapters.MoodAdapter
+import com.wellnesstracker.adapters.MoodAdapter
 import com.wellnesstracker.databinding.FragmentMoodJournalBinding
-import com.yourcompany.wellnesstracker.dialogs.AddMoodDialog
+import com.wellnesstracker.dialogs.AddMoodDialog
 import com.wellnesstracker.models.MoodEntry
 import com.wellnesstracker.utils.DataManager
 import java.text.SimpleDateFormat

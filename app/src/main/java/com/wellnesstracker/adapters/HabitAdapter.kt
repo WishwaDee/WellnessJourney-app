@@ -1,11 +1,11 @@
-package com.yourcompany.wellnesstracker.adapters
+package com.wellnesstracker.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wellnesstracker.databinding.ItemHabitBinding
-import com.yourcompany.wellnesstracker.models.Habit
-import com.yourcompany.wellnesstracker.utils.DataManager
+import com.wellnesstracker.models.Habit
+import com.wellnesstracker.utils.DataManager
 
 class HabitAdapter(
     private var habits: List<Habit>,

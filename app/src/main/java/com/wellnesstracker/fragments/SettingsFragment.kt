@@ -1,4 +1,4 @@
-package com.yourcompany.wellnesstracker.fragments
+package com.wellnesstracker.fragments
 
 import android.Manifest
 import android.content.pm.PackageManager
