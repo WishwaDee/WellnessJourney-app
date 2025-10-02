@@ -140,6 +140,11 @@ class DataManager(context: Context) {
         )
     }
 
+    fun getTodayCompletionPercentage(): Float {
+        val summary = getHabitSummary()
+        return summary.completionPercentage.coerceIn(0f, 100f)
+    }
+
     fun getHabitStreak(): Int {
         val habits = getHabits()
         if (habits.isEmpty()) return 0
