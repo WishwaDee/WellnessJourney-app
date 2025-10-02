@@ -25,6 +25,7 @@ class HabitAdapter(
             binding.textIcon.text = habit.icon
             binding.textHabitName.text = habit.name
             binding.textHabitDescription.text = habit.description
+            binding.checkboxComplete.setOnCheckedChangeListener(null)
             binding.checkboxComplete.isChecked = isCompleted
 
             binding.checkboxComplete.setOnCheckedChangeListener { _, _ ->

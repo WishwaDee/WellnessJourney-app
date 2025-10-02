@@ -4,9 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.wellnesstracker.databinding.ActivityMainBinding
+import com.wellnesstracker.fragments.DashboardFragment
 import com.wellnesstracker.fragments.HabitsFragment
+import com.wellnesstracker.fragments.DashboardFragment
 import com.wellnesstracker.fragments.MoodJournalFragment
-import com.wellnesstracker.fragments.SettingsFragment
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -18,25 +20,30 @@ class MainActivity : AppCompatActivity() {
 
         setupBottomNavigation()
 
-        // Load initial fragment
+
         if (savedInstanceState == null) {
-            loadFragment(HabitsFragment())
+            binding.bottomNavigation.selectedItemId = R.id.nav_dashboard
+            loadFragment(DashboardFragment())
         }
     }
 
     private fun setupBottomNavigation() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_habits -> {
-                    loadFragment(HabitsFragment())
+                R.id.nav_dashboard -> {
+                    loadFragment(DashboardFragment())
                     true
                 }
                 R.id.nav_mood -> {
                     loadFragment(MoodJournalFragment())
                     true
                 }
-                R.id.nav_settings -> {
-                    loadFragment(SettingsFragment())
+                R.id.nav_hydration -> {
+                    loadFragment(HydrationFragment())
+                    true
+                }
+                R.id.nav_habits -> {
+                    loadFragment(HabitsFragment())
                     true
                 }
                 else -> false
@@ -49,4 +56,8 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_container, fragment)
             .commit()
     }
+    fun openTab(tabId: Int) {
+        binding.bottomNavigation.selectedItemId = tabId
+    }
+
 }

@@ -3,11 +3,12 @@ package com.wellnesstracker.models
 import java.io.Serializable
 import java.util.UUID
 
-data class MoodEntry(
+/**
+ * Represents a single hydration event recorded by the user.
+ */
+data class HydrationEntry(
     val id: String = UUID.randomUUID().toString(),
-    val emoji: String,
-    val moodName: String,
-    val note: String = "",
+    val amountMl: Int,
     val timestamp: Long = System.currentTimeMillis(),
-    val date: String // Format: yyyy-MM-dd
+    val date: String
 ) : Serializable

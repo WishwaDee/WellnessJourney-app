@@ -6,7 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.wellnesstracker.models.Habit
 import com.wellnesstracker.models.HabitCompletion
-import com.wellnesstracker.models.MoodEntry
+import com.wellnesstracker.models.HydrationEntry
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,6 +19,8 @@ class DataManager(context: Context) {
         private const val KEY_HABITS = "habits"
         private const val KEY_COMPLETIONS = "completions"
         private const val KEY_MOODS = "moods"
+        private const val KEY_HYDRATION = "hydration_entries"
+        private const val KEY_HYDRATION_GOAL = "hydration_goal"
         private const val KEY_WATER_INTERVAL = "water_interval"
         private const val KEY_NOTIFICATIONS_ENABLED = "notifications_enabled"
     }
@@ -96,7 +98,32 @@ class DataManager(context: Context) {
         val completedCount = habits.count { isHabitCompleted(it.id, today) }
         return (completedCount * 100) / habits.size
     }
+    fun getCompletedHabitsCount(date: String = getTodayDate()): Int {
+        val habits = getHabits()
+        if (habits.isEmpty()) return 0
+        return habits.count { isHabitCompleted(it.id, date) }
+    }
 
+    fun getHabitStreak(): Int {
+        val habits = getHabits()
+        if (habits.isEmpty()) return 0
+
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val calendar = Calendar.getInstance()
+        var streak = 0
+
+        while (true) {
+            val date = sdf.format(calendar.time)
+            val allCompleted = habits.all { isHabitCompleted(it.id, date) }
+            if (!allCompleted) {
+                break
+            }
+            streak++
+            calendar.add(Calendar.DAY_OF_YEAR, -1)
+        }
+
+        return streak
+    }
     // Mood Entries
     fun saveMoods(moods: List<MoodEntry>) {
         prefs.edit().putString(KEY_MOODS, gson.toJson(moods)).apply()
@@ -118,7 +145,46 @@ class DataManager(context: Context) {
         val moods = getMoods().filter { it.id != moodId }
         saveMoods(moods)
     }
+    fun getLatestMoodForDate(date: String = getTodayDate()): MoodEntry? {
+        return getMoods().firstOrNull { it.date == date }
+    }
 
+    // Hydration
+    fun saveHydrationEntries(entries: List<HydrationEntry>) {
+        prefs.edit().putString(KEY_HYDRATION, gson.toJson(entries)).apply()
+    }
+
+    fun getHydrationEntries(): MutableList<HydrationEntry> {
+        val json = prefs.getString(KEY_HYDRATION, null) ?: return mutableListOf()
+        val type = object : TypeToken<MutableList<HydrationEntry>>() {}.type
+        return gson.fromJson(json, type) ?: mutableListOf()
+    }
+
+    fun addHydrationEntry(amountMl: Int) {
+        val entries = getHydrationEntries()
+        val today = getTodayDate()
+        entries.add(0, HydrationEntry(amountMl = amountMl, date = today))
+        saveHydrationEntries(entries)
+    }
+
+    fun getTodayHydrationTotal(): Int {
+        val today = getTodayDate()
+        return getHydrationEntries().filter { it.date == today }.sumOf { it.amountMl }
+    }
+
+    fun getHydrationGoal(): Int {
+        return prefs.getInt(KEY_HYDRATION_GOAL, 2000)
+    }
+
+    fun setHydrationGoal(goal: Int) {
+        prefs.edit().putInt(KEY_HYDRATION_GOAL, goal).apply()
+    }
+
+    fun getHydrationProgressPercentage(): Int {
+        val goal = getHydrationGoal()
+        if (goal == 0) return 0
+        return ((getTodayHydrationTotal().toFloat() / goal) * 100).toInt().coerceAtMost(100)
+    }
     // Settings
     fun setWaterInterval(minutes: Int) {
         prefs.edit().putInt(KEY_WATER_INTERVAL, minutes).apply()
