@@ -36,6 +36,7 @@ for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
 
 @rem Find java.exe
+if not defined JAVA_HOME call :detectJavaFromEnv
 if defined JAVA_HOME goto findJavaFromJavaHome
 
 set JAVA_EXE=java.exe
@@ -49,6 +50,43 @@ echo Please set the JAVA_HOME variable in your environment to match the
 echo location of your Java installation.
 
 goto fail
+
+:detectJavaFromEnv
+    if defined GRADLE_JAVA_HOME call :setJavaHomeIfValid "%GRADLE_JAVA_HOME%"
+    if not defined JAVA_HOME if defined ANDROID_STUDIO_JDK call :setJavaHomeIfValid "%ANDROID_STUDIO_JDK%"
+    if not defined JAVA_HOME call :probeCommonJbrLocations
+    goto :eof
+
+:setJavaHomeIfValid
+    set "_CANDIDATE=%~1"
+    if "%_CANDIDATE%"=="" goto :eof
+    if exist "%_CANDIDATE%\bin\java.exe" (
+        set "JAVA_HOME=%_CANDIDATE%"
+        goto :eof
+    )
+    if exist "%_CANDIDATE%\Contents\Home\bin\java.exe" (
+        set "JAVA_HOME=%_CANDIDATE%\Contents\Home"
+    )
+    goto :eof
+
+:probeCommonJbrLocations
+    for %%L in ("%LOCALAPPDATA%\Programs\Android Studio\jbr" "%ProgramFiles%\Android\Android Studio\jbr" "%ProgramFiles(x86)%\Android\Android Studio\jbr") do (
+        if not defined JAVA_HOME call :setJavaHomeIfValid "%%~L"
+    )
+    if defined JAVA_HOME goto :eof
+    if defined LOCALAPPDATA (
+        set "_JETBRAINS_TOOLBOX=%LOCALAPPDATA%\JetBrains\Toolbox\apps\AndroidStudio"
+        if exist "%_JETBRAINS_TOOLBOX%" (
+            for /d %%R in ("%_JETBRAINS_TOOLBOX%\*") do (
+                for /d %%V in ("%%~R\jbr") do if not defined JAVA_HOME call :setJavaHomeIfValid "%%~V"
+                for /d %%V in ("%%~R\*\jbr") do if not defined JAVA_HOME call :setJavaHomeIfValid "%%~V"
+                for /d %%V in ("%%~R\*\jbr\Contents\Home") do if not defined JAVA_HOME call :setJavaHomeIfValid "%%~V"
+                for /d %%V in ("%%~R\jbr\Contents\Home") do if not defined JAVA_HOME call :setJavaHomeIfValid "%%~V"
+            )
+        )
+    )
+    set "_JETBRAINS_TOOLBOX="
+    goto :eof
 
 :findJavaFromJavaHome
 set JAVA_HOME=%JAVA_HOME:"=%

@@ -79,6 +79,65 @@ case "`uname`" in
     nonstop=true
     ;;
 esac
+if [ -z "$JAVA_HOME" ] ; then
+    possible_java_homes=""
+
+    if [ -n "$GRADLE_JAVA_HOME" ] ; then
+        possible_java_homes="$possible_java_homes|$GRADLE_JAVA_HOME"
+    fi
+
+    if [ -n "$ANDROID_STUDIO_JDK" ] ; then
+        possible_java_homes="$possible_java_homes|$ANDROID_STUDIO_JDK"
+    fi
+
+    if [ "$darwin" = "true" ] ; then
+        possible_java_homes="$possible_java_homes|/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+    else
+        possible_java_homes="$possible_java_homes|/opt/android-studio/jbr"
+        possible_java_homes="$possible_java_homes|/opt/android-studio/jbr/Contents/Home"
+        possible_java_homes="$possible_java_homes|$HOME/.local/share/JetBrains/Toolbox/apps/AndroidStudio"
+    fi
+
+    if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
+        possible_java_homes="$possible_java_homes|/c/Program Files/Android/Android Studio/jbr"
+        possible_java_homes="$possible_java_homes|/c/Program Files/Android/Android Studio/jbr/Contents/Home"
+        possible_java_homes="$possible_java_homes|/c/Program Files (x86)/Android/Android Studio/jbr"
+    fi
+
+    OLD_IFS="$IFS"
+    IFS='|'
+    for candidate in $possible_java_homes ; do
+        if [ -z "$candidate" ] ; then
+            continue
+        fi
+
+        if [ -d "$candidate" ] && [ -x "$candidate/bin/java" ] ; then
+            JAVA_HOME="$candidate"
+            export JAVA_HOME
+            break
+        fi
+
+        if [ -d "$candidate" ] && [ -x "$candidate/Contents/Home/bin/java" ] ; then
+            JAVA_HOME="$candidate/Contents/Home"
+            export JAVA_HOME
+            break
+        fi
+
+        if [ "$candidate" = "$HOME/.local/share/JetBrains/Toolbox/apps/AndroidStudio" ] ; then
+            for toolbox_root in "$candidate"/* "$candidate"/*/* ; do
+                for toolbox_home in "$toolbox_root"/jbr "$toolbox_root"/jbr/Contents/Home ; do
+                    if [ -d "$toolbox_home" ] && [ -x "$toolbox_home/bin/java" ] ; then
+                        JAVA_HOME="$toolbox_home"
+                        export JAVA_HOME
+                        break 3
+                    fi
+                done
+            done
+        fi
+    done
+    IFS="$OLD_IFS"
+fi
+
 
 CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
 
