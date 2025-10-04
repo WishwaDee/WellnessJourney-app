@@ -42,6 +42,7 @@
 
     <!-- Hydration -->
     <string name="hydration_tracker">Hydration Tracker</string>
+    <string name="hydration_tracker_subtitle">Stay hydrated, stay healthy</string>
     <string name="add_250ml">Add 250 ml</string>
     <string name="format_add_amount">Add %1$d ml</string>
     <string name="quick_add">Quick add</string>
@@ -49,11 +50,12 @@
     <string name="add_custom_amount">Add custom amount</string>
     <string name="recent_history">Recent history</string>
     <string name="no_hydration_history">No hydration data yet</string>
+    <string name="no_hydration_history_subtitle">Start tracking your water intake</string>
     <string name="hydration_tips">Hydration tips</string>
-    <string name="tip_one">Drink a glass of water when you wake up.</string>
-    <string name="tip_two">Set reminders every 2 hours during the day.</string>
-    <string name="tip_three">Eat water-rich foods like fruits and vegetables.</string>
-    <string name="tip_four">Drink extra water before, during, and after exercise.</string>
+    <string name="tip_one">💧 Drink a glass of water when you wake up.</string>
+    <string name="tip_two">⏰ Set reminders every 2 hours during the day.</string>
+    <string name="tip_three">🥗 Eat water-rich foods like fruits and vegetables.</string>
+    <string name="tip_four">🏃‍♀️ Drink extra water before, during, and after exercise.</string>
 
     <!-- Formatting strings -->
     <string name="format_daily_goal">Daily goal: %1$d ml</string>
@@ -72,6 +74,17 @@
     <string name="todays_habits">Today’s habits</string>
     <string name="no_habits_title">No habits yet</string>
     <string name="no_habits_subtitle">Tap + to add your first habit</string>
+    <string name="habit_tips_title">Habit building tips</string>
+    <string name="habit_tip_one">🌱 Start small – even 5 minutes counts as progress.</string>
+    <string name="habit_tip_two">🔁 Consistency beats perfection – aim for daily practice.</string>
+    <string name="habit_tip_three">🤝 Stack new habits with existing routines.</string>
+    <string name="habit_tip_four">🎉 Celebrate small wins to build momentum.</string>
+    <string name="habit_goal_label">Goal: %1$s</string>
+    <string name="habit_completed_count">%1$d completed</string>
+    <string name="habit_remaining_count">%1$d remaining</string>
+    <string name="habit_status_complete">Completed today!</string>
+    <string name="habit_status_incomplete">Tap + to mark this habit complete.</string>
+    <string name="habit_description_placeholder">Add a short goal description to stay focused.</string>
 
     <!-- Mood journal -->
     <string name="mood_journal_title">Mood Journal</string>
@@ -83,6 +96,7 @@
     <string name="save_mood">Save mood</string>
     <string name="recent_moods">Recent moods</string>
     <string name="no_mood_entries">No mood entries yet</string>
+    <string name="no_mood_entries_subtitle">Start tracking your daily emotions</string>
     <string name="mood_happy">Happy</string>
     <string name="mood_calm">Calm</string>
     <string name="mood_sad">Sad</string>
@@ -91,7 +105,8 @@
     <string name="mood_anxious">Anxious</string>
     <string name="mood_grateful">Grateful</string>
     <string name="mood_confident">Confident</string>
-    <string name="format_mood_chip">%1$s %2$s</string>
+    <string name="format_mood_chip">%1$s
+%2$s</string>
     <string name="error_select_mood">Select a mood to continue.</string>
     <string name="mood_saved">Mood saved for today!</string>
     <string name="mood_deleted">Mood entry deleted.</string>

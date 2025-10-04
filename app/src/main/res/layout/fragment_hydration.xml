@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_base">
+    android:background="@color/color_base"
+    android:overScrollMode="never">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,154 +15,237 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="@android:color/transparent"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/bg_hydration_header"
-            android:padding="24dp">
+            app:cardCornerRadius="28dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hydration_tracker"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
+                    android:textSize="26sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/text_daily_goal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/hydration_tracker_subtitle"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/text_progress_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:textColor="@color/white"
-                    android:textSize="40sp"
-                    android:textStyle="bold" />
-
-                <ProgressBar
-                    android:id="@+id/progress_hydration"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_marginTop="12dp"
-                    android:max="100"
-                    android:progressTint="@color/white"
-                    android:backgroundTint="#33FFFFFF" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:cardBackgroundColor="@color/color_surface"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/color_divider"
+                    app:strokeWidth="1dp">
 
-                <TextView
-                    android:id="@+id/text_remaining"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:id="@+id/text_progress_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/text_daily_goal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/color_icon_tint"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progress_hydration"
+                            android:layout_width="match_parent"
+                            android:layout_height="12dp"
+                            android:layout_marginTop="16dp"
+                            android:max="100"
+                            app:indicatorColor="@color/gradient_hydration_start"
+                            app:trackColor="@color/color_divider"
+                            app:trackThickness="12dp" />
+
+                        <TextView
+                            android:id="@+id/text_remaining"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_quick_add"
+                    style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="20dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_secondary"
+                    android:textSize="16sp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/ic_water"
+                    app:iconGravity="textStart"
+                    app:iconPadding="12dp"
+                    app:iconTint="@color/color_secondary"
+                    app:rippleColor="@color/color_accent_variant" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_quick_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/add_250ml"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/color_accent" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
             android:text="@string/quick_add"
             android:textColor="@color/color_text_primary"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/container_quick_buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_quick_250"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:text="250ml"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="250 ml"
+                android:textAllCaps="false"
                 android:textColor="@color/color_secondary"
-                app:strokeColor="@color/color_secondary" />
+                android:textSize="14sp"
+                app:backgroundTint="@color/color_surface"
+                app:cornerRadius="24dp"
+                app:icon="@drawable/ic_water"
+                app:iconGravity="textTop"
+                app:iconPadding="6dp"
+                app:iconTint="@color/color_secondary"
+                app:strokeColor="@color/color_divider"
+                app:strokeWidth="1dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_quick_500"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1"
-                android:text="500ml"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="500 ml"
+                android:textAllCaps="false"
                 android:textColor="@color/color_secondary"
-                app:strokeColor="@color/color_secondary" />
+                android:textSize="14sp"
+                app:backgroundTint="@color/color_surface"
+                app:cornerRadius="24dp"
+                app:icon="@drawable/ic_water"
+                app:iconGravity="textTop"
+                app:iconPadding="6dp"
+                app:iconTint="@color/color_secondary"
+                app:strokeColor="@color/color_divider"
+                app:strokeWidth="1dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_quick_750"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1"
-                android:text="750ml"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="750 ml"
+                android:textAllCaps="false"
                 android:textColor="@color/color_secondary"
-                app:strokeColor="@color/color_secondary" />
+                android:textSize="14sp"
+                app:backgroundTint="@color/color_surface"
+                app:cornerRadius="24dp"
+                app:icon="@drawable/ic_water"
+                app:iconGravity="textTop"
+                app:iconPadding="6dp"
+                app:iconTint="@color/color_secondary"
+                app:strokeColor="@color/color_divider"
+                app:strokeWidth="1dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_quick_1000"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="1000ml"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="1000 ml"
+                android:textAllCaps="false"
                 android:textColor="@color/color_secondary"
-                app:strokeColor="@color/color_secondary" />
+                android:textSize="14sp"
+                app:backgroundTint="@color/color_surface"
+                app:cornerRadius="24dp"
+                app:icon="@drawable/ic_water"
+                app:iconGravity="textTop"
+                app:iconPadding="6dp"
+                app:iconTint="@color/color_secondary"
+                app:strokeColor="@color/color_divider"
+                app:strokeWidth="1dp" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="@color/color_surface">
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/color_surface"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/color_divider"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/custom_amount"
                     android:textColor="@color/color_text_primary"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -173,13 +257,16 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_decrease"
-                        style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:minWidth="48dp"
-                        android:text="-"
-                        android:textColor="@color/color_secondary"
-                        app:strokeColor="@color/color_secondary" />
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="−"
+                        android:textSize="20sp"
+                        app:cornerRadius="16dp"
+                        app:strokeColor="@color/color_divider"
+                        app:strokeWidth="1dp" />
 
                     <TextView
                         android:id="@+id/text_custom_value"
@@ -188,27 +275,31 @@
                         android:layout_marginHorizontal="24dp"
                         android:text="250"
                         android:textColor="@color/color_text_primary"
-                        android:textSize="24sp"
+                        android:textSize="26sp"
                         android:textStyle="bold" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_increase"
-                        style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:minWidth="48dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
                         android:text="+"
-                        android:textColor="@color/color_secondary"
-                        app:strokeColor="@color/color_secondary" />
+                        android:textSize="20sp"
+                        app:cornerRadius="16dp"
+                        app:strokeColor="@color/color_divider"
+                        app:strokeWidth="1dp" />
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_add_custom"
-                    style="@style/Widget.Material3.Button"
+                    style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/add_custom_amount"
+                    android:textAllCaps="false"
                     android:textColor="@color/white"
                     app:backgroundTint="@color/color_accent" />
             </LinearLayout>
@@ -220,16 +311,33 @@
             android:layout_marginTop="24dp"
             android:text="@string/recent_history"
             android:textColor="@color/color_text_primary"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_no_history"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            android:drawableTop="@drawable/ic_water"
+            android:drawablePadding="12dp"
+            android:gravity="center"
+            android:padding="16dp"
             android:text="@string/no_hydration_history"
-            android:textColor="@color/color_text_secondary" />
+            android:textColor="@color/color_text_primary"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:drawableTint="@color/color_icon_tint" />
+
+        <TextView
+            android:id="@+id/text_history_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="@string/no_hydration_history_subtitle"
+            android:textColor="@color/color_text_secondary"
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/container_history"
@@ -241,22 +349,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="@color/color_surface">
+            app:cardBackgroundColor="@color/color_surface"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/color_divider"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hydration_tips"
                     android:textColor="@color/color_text_primary"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -264,28 +374,32 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="@string/tip_one"
-                    android:textColor="@color/color_text_secondary" />
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/tip_two"
-                    android:textColor="@color/color_text_secondary" />
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/tip_three"
-                    android:textColor="@color/color_text_secondary" />
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/tip_four"
-                    android:textColor="@color/color_text_secondary" />
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="14sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

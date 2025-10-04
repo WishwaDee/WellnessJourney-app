@@ -117,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:text="Clear All Data"
                     android:layout_marginTop="8dp"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textColor="@color/color_secondary"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
