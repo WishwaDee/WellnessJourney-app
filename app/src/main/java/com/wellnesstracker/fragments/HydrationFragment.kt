@@ -105,6 +105,7 @@ class HydrationFragment : Fragment() {
         }
 
         binding.textNoHistory.isVisible = entries.isEmpty()
+        binding.textHistorySubtitle.isVisible = entries.isEmpty()
         binding.containerHistory.removeAllViews()
 
         if (entries.isEmpty()) {
