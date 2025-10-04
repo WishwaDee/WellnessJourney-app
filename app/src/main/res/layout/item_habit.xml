@@ -77,7 +77,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_minus"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:insetTop="0dp"
@@ -100,7 +101,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_plus"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:insetTop="0dp"
