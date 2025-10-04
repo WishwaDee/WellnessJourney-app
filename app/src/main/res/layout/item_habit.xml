@@ -3,59 +3,123 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="2dp"
+    android:layout_marginBottom="16dp"
     app:cardBackgroundColor="@color/color_surface"
-    app:strokeColor="@color/color_base_variant"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="4dp"
+    app:strokeColor="@color/color_divider"
     app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/text_icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/bg_circle_soft"
-            android:gravity="center"
-            android:text="💧"
-            android:textSize="24sp" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/text_habit_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Drink Water"
-                android:textColor="@color/color_text_primary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:id="@+id/text_icon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_circle_soft"
+                android:gravity="center"
+                android:text="💧"
+                android:textSize="26sp" />
 
-            <TextView
-                android:id="@+id/text_habit_description"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Stay hydrated"
-                android:textColor="@color/color_text_secondary"
-                android:textSize="14sp" />
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_habit_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Drink Water"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_habit_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Goal description"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/checkbox_complete"
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="16dp"
+            android:max="100"
+            app:indicatorColor="@color/gradient_habits_start"
+            app:trackColor="@color/color_divider"
+            app:trackThickness="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_minus"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="−"
+                android:textSize="20sp"
+                app:cornerRadius="16dp"
+                app:strokeColor="@color/color_divider"
+                app:strokeWidth="1dp" />
+
+            <TextView
+                android:id="@+id/text_progress_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:text="0%"
+                android:textColor="@color/color_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_plus"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="+"
+                android:textSize="20sp"
+                app:cornerRadius="16dp"
+                app:strokeColor="@color/color_divider"
+                app:strokeWidth="1dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_completion_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/color_accent" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Not started"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="13sp" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -140,6 +140,7 @@ class MoodJournalFragment : Fragment() {
     private fun updateEmptyState(hasMoods: Boolean) {
         binding.recyclerRecentMoods.isVisible = hasMoods
         binding.textEmptyState.isVisible = !hasMoods
+        binding.textEmptySubtitle.isVisible = !hasMoods
     }
 
     override fun onDestroyView() {

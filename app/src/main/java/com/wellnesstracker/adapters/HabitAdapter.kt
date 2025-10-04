@@ -3,6 +3,7 @@ package com.wellnesstracker.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.wellnesstracker.R
 import com.wellnesstracker.databinding.ItemHabitBinding
 import com.wellnesstracker.models.Habit
 import com.wellnesstracker.utils.DataManager
@@ -20,17 +21,42 @@ class HabitAdapter(
 
         fun bind(habit: Habit) {
             val today = dataManager.getTodayDate()
-            val isCompleted = dataManager.isHabitCompleted(habit.id, today)
+            val context = binding.root.context
 
             binding.textIcon.text = habit.icon
             binding.textHabitName.text = habit.name
-            binding.textHabitDescription.text = habit.description
-            binding.checkboxComplete.setOnCheckedChangeListener(null)
-            binding.checkboxComplete.isChecked = isCompleted
+            binding.textHabitDescription.text = if (habit.description.isBlank()) {
+                context.getString(R.string.habit_description_placeholder)
+            } else {
+                context.getString(R.string.habit_goal_label, habit.description)
+            }
 
-            binding.checkboxComplete.setOnCheckedChangeListener { _, _ ->
-                dataManager.toggleHabitCompletion(habit.id, today)
-                onHabitComplete()
+            updateProgressState(dataManager.isHabitCompleted(habit.id, today))
+
+            binding.buttonPlus.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val completed = dataManager.isHabitCompleted(habit.id, today)
+                    if (!completed) {
+                        dataManager.toggleHabitCompletion(habit.id, today)
+                        onHabitComplete()
+                        updateProgressState(true)
+                        notifyItemChanged(position)
+                    }
+                }
+            }
+
+            binding.buttonMinus.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val completed = dataManager.isHabitCompleted(habit.id, today)
+                    if (completed) {
+                        dataManager.toggleHabitCompletion(habit.id, today)
+                        onHabitComplete()
+                        updateProgressState(false)
+                        notifyItemChanged(position)
+                    }
+                }
             }
 
             binding.root.setOnClickListener {
@@ -41,6 +67,17 @@ class HabitAdapter(
                 onHabitDelete(habit)
                 true
             }
+        }
+
+        private fun updateProgressState(isCompleted: Boolean) {
+            binding.progressIndicator.progress = if (isCompleted) 100 else 0
+            binding.textProgressValue.text = if (isCompleted) "100%" else "0%"
+            val labelRes = if (isCompleted) {
+                R.string.habit_status_complete
+            } else {
+                R.string.habit_status_incomplete
+            }
+            binding.textCompletionLabel.text = binding.root.context.getString(labelRes)
         }
     }
 

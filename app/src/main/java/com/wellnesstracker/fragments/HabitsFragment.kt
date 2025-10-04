@@ -109,7 +109,15 @@ class HabitsFragment : Fragment() {
 
         val habits = dataManager.getHabits()
         val completed = habits.count { dataManager.isHabitCompleted(it.id, dataManager.getTodayDate()) }
-        binding.textProgressDetail.text = "$completed of ${habits.size} completed today"
+        binding.textCompletedCount.text = getString(R.string.habit_completed_count, completed)
+        val remaining = (habits.size - completed).coerceAtLeast(0)
+        binding.textRemainingCount.text = getString(R.string.habit_remaining_count, remaining)
+
+        binding.textProgressDetail.text = if (habits.isEmpty()) {
+            getString(R.string.no_habits_subtitle)
+        } else {
+            getString(R.string.format_habits_remaining, completed, habits.size)
+        }
     }
 
     private fun updateEmptyState() {

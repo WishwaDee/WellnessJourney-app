@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_base">
+    android:background="@color/color_base"
+    android:overScrollMode="never">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,129 +15,152 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:padding="24dp"
-            app:cardCornerRadius="24dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_mood_header"
+            app:cardCornerRadius="28dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="@android:color/transparent"
-            android:background="@drawable/bg_mood_header">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mood_journal_title"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
+                    android:textSize="26sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     android:text="@string/mood_journal_subtitle"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_add_mood"
-                    style="@style/Widget.Material3.Button"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/add_todays_mood"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/todays_mood"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:backgroundTint="@color/color_accent" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_add_mood"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_mood_add_entry"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingStart="24dp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="20dp"
+                    android:text="@string/add_todays_mood"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_secondary"
+                    android:textSize="16sp"
+                    app:icon="@drawable/ic_mood"
+                    app:iconGravity="textStart"
+                    app:iconPadding="12dp"
+                    app:iconTint="@color/color_icon_tint"
+                    app:rippleColor="@color/color_accent_variant" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:strokeColor="@color/color_base_variant"
-            app:strokeWidth="1dp"
             app:cardBackgroundColor="@color/color_surface"
-            android:padding="16dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/how_are_you_feeling"
-                android:textColor="@color/color_text_primary"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group_moods"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:chipSpacingHorizontal="8dp"
-            app:chipSpacingVertical="8dp"
-            app:singleSelection="true" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout_note"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="@string/note_optional"
-                app:boxBackgroundColor="@color/color_surface"
-                app:boxBackgroundMode="filled"
-                app:boxCornerRadiusTopStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusBottomEnd="16dp"
-                app:hintTextColor="@color/color_text_secondary">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_note"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="80dp"
-                    android:gravity="top"
-                    android:inputType="textMultiLine" />
-            </com.google.android.material.textfield.TextInputLayout>
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/color_divider"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="end"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:padding="20dp">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_clear"
-                    style="@style/Widget.Material3.Button.TextButton"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/cancel"
-                    android:textColor="@color/color_secondary" />
+                    android:text="@string/how_are_you_feeling"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_save_mood"
-                    style="@style/Widget.Material3.Button"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_moods"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/save_mood"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/color_accent" />
+                    android:layout_marginTop="16dp"
+                    app:chipSpacingHorizontal="12dp"
+                    app:chipSpacingVertical="12dp"
+                    app:singleSelection="true" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_note"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/note_optional"
+                    app:boxBackgroundColor="@color/color_surface_soft"
+                    app:boxCornerRadiusBottomEnd="20dp"
+                    app:boxCornerRadiusBottomStart="20dp"
+                    app:boxCornerRadiusTopEnd="20dp"
+                    app:boxCornerRadiusTopStart="20dp"
+                    app:hintTextColor="@color/color_icon_tint">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:inputType="textMultiLine"
+                        android:minHeight="100dp"
+                        android:textColor="@color/color_text_primary" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_clear"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cancel"
+                        android:textAllCaps="false"
+                        android:textColor="@color/color_secondary" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_save_mood"
+                        style="@style/Widget.Material3.Button.FilledButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/save_mood"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/color_accent" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
@@ -150,17 +174,35 @@
 
         <TextView
             android:id="@+id/text_empty_state"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
+            android:drawableTop="@drawable/ic_mood"
+            android:drawablePadding="12dp"
+            android:gravity="center"
+            android:padding="16dp"
             android:text="@string/no_mood_entries"
-            android:textColor="@color/color_text_secondary" />
+            android:textColor="@color/color_text_primary"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:drawableTint="@color/color_icon_tint" />
+
+        <TextView
+            android:id="@+id/text_empty_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-8dp"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="@string/no_mood_entries_subtitle"
+            android:textColor="@color/color_text_secondary"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_recent_moods"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:nestedScrollingEnabled="false" />
     </LinearLayout>
 </ScrollView>
