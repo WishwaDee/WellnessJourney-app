@@ -8,7 +8,9 @@
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorSecondaryContainer">@color/color_accent_variant</item>
         <item name="colorSurface">@color/color_surface</item>
+
         <item name="android:windowBackground">@color/color_base</item>
+
         <item name="android:colorBackground">@color/color_base</item>
         <item name="android:statusBarColor">@color/color_secondary</item>
         <item name="android:navigationBarColor">@color/color_secondary</item>
