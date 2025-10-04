@@ -3,10 +3,11 @@ package com.wellnesstracker.dialogs
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Button
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.button.MaterialButton
 import com.wellnesstracker.R
 import com.wellnesstracker.databinding.DialogAddMoodBinding
 
@@ -20,7 +21,7 @@ class AddMoodDialog(
     private var selectedEmoji = "😊"
     private var selectedMood = "Happy"
 
-    private val moodButtons = mutableListOf<Button>()
+    private val moodButtons = mutableListOf<MaterialButton>()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogAddMoodBinding.inflate(LayoutInflater.from(context))
@@ -39,37 +40,42 @@ class AddMoodDialog(
     }
 
     private fun setupMoodButtons() {
-        moodButtons.addAll(listOf(
-            binding.buttonGreat,
-            binding.buttonHappy,
-            binding.buttonOkay,
-            binding.buttonSad,
-            binding.buttonAngry
-        ))
+        moodButtons.addAll(
+            listOf(
+                binding.buttonGreat,
+                binding.buttonHappy,
+                binding.buttonOkay,
+                binding.buttonSad,
+                binding.buttonAngry
+            )
+        )
 
-        binding.buttonGreat.setOnClickListener { selectMood("😄", "Great", it as Button) }
-        binding.buttonHappy.setOnClickListener { selectMood("😊", "Happy", it as Button) }
-        binding.buttonOkay.setOnClickListener { selectMood("😐", "Okay", it as Button) }
-        binding.buttonSad.setOnClickListener { selectMood("😢", "Sad", it as Button) }
-        binding.buttonAngry.setOnClickListener { selectMood("😠", "Angry", it as Button) }
+        binding.buttonGreat.setOnClickListener { selectMood("😄", "Great", binding.buttonGreat) }
+        binding.buttonHappy.setOnClickListener { selectMood("😊", "Happy", binding.buttonHappy) }
+        binding.buttonOkay.setOnClickListener { selectMood("😐", "Okay", binding.buttonOkay) }
+        binding.buttonSad.setOnClickListener { selectMood("😢", "Sad", binding.buttonSad) }
+        binding.buttonAngry.setOnClickListener { selectMood("😠", "Angry", binding.buttonAngry) }
 
         // Select Happy by default
         selectMood("😊", "Happy", binding.buttonHappy)
     }
 
-    private fun selectMood(emoji: String, mood: String, button: Button) {
+    private fun selectMood(emoji: String, mood: String, button: MaterialButton) {
         selectedEmoji = emoji
         selectedMood = mood
 
         moodButtons.forEach { btn ->
-            btn.setBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.mood_button_default)
-            )
+            val baseColor = ContextCompat.getColor(requireContext(), R.color.mood_button_default)
+            val secondaryColor = ContextCompat.getColor(requireContext(), R.color.color_secondary)
+            btn.backgroundTintList = ColorStateList.valueOf(baseColor)
+            btn.setStrokeColor(ColorStateList.valueOf(secondaryColor))
+            btn.setTextColor(secondaryColor)
         }
 
-        button.setBackgroundColor(
-            ContextCompat.getColor(requireContext(), R.color.purple_500)
-        )
+        val accent = ContextCompat.getColor(requireContext(), R.color.color_accent)
+        button.backgroundTintList = ColorStateList.valueOf(accent)
+        button.setStrokeColor(ColorStateList.valueOf(accent))
+        button.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
     }
 
     override fun onDestroyView() {
