@@ -34,7 +34,8 @@ class HabitAdapter(
             updateProgressState(dataManager.isHabitCompleted(habit.id, today))
 
             binding.buttonPlus.setOnClickListener {
-                val position = bindingAdapterPosition
+                @Suppress("DEPRECATION")
+                val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val completed = dataManager.isHabitCompleted(habit.id, today)
                     if (!completed) {
@@ -47,7 +48,8 @@ class HabitAdapter(
             }
 
             binding.buttonMinus.setOnClickListener {
-                val position = bindingAdapterPosition
+                @Suppress("DEPRECATION")
+                val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val completed = dataManager.isHabitCompleted(habit.id, today)
                     if (completed) {
