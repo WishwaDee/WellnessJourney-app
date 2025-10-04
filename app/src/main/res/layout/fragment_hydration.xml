@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/color_base">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,7 +75,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/add_250ml" />
+            android:text="@string/add_250ml"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/color_accent" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,7 +85,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="8dp"
             android:text="@string/quick_add"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text_primary"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -101,7 +103,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:text="250ml" />
+                android:text="250ml"
+                android:textColor="@color/color_secondary"
+                app:strokeColor="@color/color_secondary" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_quick_500"
@@ -110,7 +114,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1"
-                android:text="500ml" />
+                android:text="500ml"
+                android:textColor="@color/color_secondary"
+                app:strokeColor="@color/color_secondary" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_quick_750"
@@ -119,7 +125,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1"
-                android:text="750ml" />
+                android:text="750ml"
+                android:textColor="@color/color_secondary"
+                app:strokeColor="@color/color_secondary" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_quick_1000"
@@ -128,7 +136,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="1000ml" />
+                android:text="1000ml"
+                android:textColor="@color/color_secondary"
+                app:strokeColor="@color/color_secondary" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -136,7 +146,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="2dp">
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/color_surface">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -149,7 +160,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/custom_amount"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_text_primary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -166,7 +177,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="48dp"
-                        android:text="-" />
+                        android:text="-"
+                        android:textColor="@color/color_secondary"
+                        app:strokeColor="@color/color_secondary" />
 
                     <TextView
                         android:id="@+id/text_custom_value"
@@ -174,7 +187,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:text="250"
-                        android:textColor="@color/black"
+                        android:textColor="@color/color_text_primary"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -184,7 +197,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="48dp"
-                        android:text="+" />
+                        android:text="+"
+                        android:textColor="@color/color_secondary"
+                        app:strokeColor="@color/color_secondary" />
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
@@ -193,7 +208,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/add_custom_amount" />
+                    android:text="@string/add_custom_amount"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/color_accent" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -202,7 +219,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/recent_history"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text_primary"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -212,7 +229,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/no_hydration_history"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@color/color_text_secondary" />
 
         <LinearLayout
             android:id="@+id/container_history"
@@ -225,7 +242,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="2dp">
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/color_surface">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -237,7 +255,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hydration_tips"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_text_primary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -246,28 +264,28 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="@string/tip_one"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@color/color_text_secondary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/tip_two"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@color/color_text_secondary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/tip_three"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@color/color_text_secondary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/tip_four"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@color/color_text_secondary" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
