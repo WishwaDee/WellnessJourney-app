@@ -54,7 +54,9 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_add_mood"
+
                     style="@style/Widget.MaterialComponents.Button.TextButton"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -111,7 +113,9 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_note"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -143,6 +147,7 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_clear"
                         style="@style/Widget.MaterialComponents.Button.TextButton"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cancel"
@@ -151,7 +156,9 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_save_mood"
+
                         style="@style/Widget.MaterialComponents.Button"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
