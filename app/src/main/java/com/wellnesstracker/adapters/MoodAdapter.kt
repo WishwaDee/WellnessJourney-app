@@ -11,6 +11,7 @@ import java.util.*
 
 class MoodAdapter(
     private var moods: List<MoodEntry>,
+    private val onMoodSelected: (MoodEntry) -> Unit,
     private val onMoodDelete: (MoodEntry) -> Unit
 ) : RecyclerView.Adapter<MoodAdapter.MoodViewHolder>() {
 
@@ -26,6 +27,9 @@ class MoodAdapter(
             val sdf = SimpleDateFormat("MMM dd, yyyy - hh:mm a", Locale.getDefault())
             binding.textTimestamp.text = sdf.format(Date(mood.timestamp))
 
+            binding.root.setOnClickListener {
+                onMoodSelected(mood)
+            }
             binding.root.setOnLongClickListener {
                 onMoodDelete(mood)
                 true

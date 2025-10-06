@@ -35,7 +35,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/habits_title"
-                        android:textColor="@color/color_text_primary"
+                        android:textColor="@color/white"
                         android:textSize="26sp"
                         android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="@string/habits_subtitle"
-                        android:textColor="@color/color_text_secondary"
+                        android:textColor="@color/color_surface_soft"
                         android:textSize="14sp" />
 
                     <TextView
@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:textColor="@color/color_text_primary"
+                        android:textColor="@color/white"
                         android:textSize="40sp"
                         android:textStyle="bold" />
 
@@ -62,8 +62,8 @@
                         android:layout_height="12dp"
                         android:layout_marginTop="12dp"
                         android:max="100"
-                        app:indicatorColor="@color/gradient_habits_start"
-                        app:trackColor="@color/color_divider"
+                        app:indicatorColor="@color/white"
+                        app:trackColor="#33FFFFFF"
                         app:trackThickness="12dp" />
 
                     <LinearLayout
@@ -78,7 +78,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="@color/color_surface_soft"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -88,7 +88,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="end"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="@color/color_surface_soft"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -98,7 +98,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:textColor="@color/color_text_secondary"
+                        android:textColor="@color/color_surface_soft"
                         android:textSize="14sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

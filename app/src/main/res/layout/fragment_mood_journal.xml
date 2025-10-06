@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_base"
@@ -31,7 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mood_journal_title"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="@color/white"
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
@@ -40,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:text="@string/mood_journal_subtitle"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="@color/color_surface_soft"
                     android:textSize="14sp" />
 
                 <TextView
@@ -48,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/todays_mood"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -69,12 +70,12 @@
                     android:paddingBottom="20dp"
                     android:text="@string/add_todays_mood"
                     android:textAllCaps="false"
-                    android:textColor="@color/color_secondary"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     app:icon="@drawable/ic_mood"
                     app:iconGravity="textStart"
                     app:iconPadding="12dp"
-                    app:iconTint="@color/color_icon_tint"
+                    app:iconTint="@color/white"
                     app:rippleColor="@color/color_accent_variant" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -101,6 +102,19 @@
                     android:textColor="@color/color_text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_editing_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_editing_banner"
+                    android:gravity="center_vertical"
+                    android:padding="12dp"
+                    android:textColor="@color/color_accent"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    tools:text="Editing 😊 Happy – make your changes and tap update." />
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/chip_group_moods"
@@ -150,7 +164,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/cancel"
+                        android:text="@string/clear_mood"
                         android:textAllCaps="false"
                         android:textColor="@color/color_secondary" />
 
