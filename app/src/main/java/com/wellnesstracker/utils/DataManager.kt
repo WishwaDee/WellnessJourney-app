@@ -146,6 +146,16 @@ class DataManager(context: Context) {
         val moods = getMoods().filter { it.id != moodId }
         saveMoods(moods)
     }
+
+    fun updateMood(mood: MoodEntry) {
+        val moods = getMoods()
+        val index = moods.indexOfFirst { it.id == mood.id }
+        if (index != -1) {
+            moods[index] = mood
+            val sorted = moods.sortedByDescending { it.timestamp }
+            saveMoods(sorted)
+        }
+    }
     fun getLatestMoodForDate(date: String = getTodayDate()): MoodEntry? {
         return getMoods().firstOrNull { it.date == date }
     }

@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dashboard_title"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="@color/white"
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="@color/color_surface_soft"
                     android:textSize="14sp" />
 
                 <TextView
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/todays_progress"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -173,9 +173,9 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/reset_onboarding"
                     android:textAllCaps="false"
-                    android:textColor="@color/color_secondary"
+                    android:textColor="@color/white"
                     app:backgroundTint="@android:color/transparent"
-                    app:strokeColor="@color/color_secondary"
+                    app:strokeColor="@color/white"
                     app:strokeWidth="1dp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

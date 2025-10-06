@@ -23,6 +23,8 @@ class MoodJournalFragment : Fragment() {
     private lateinit var dataManager: DataManager
     private lateinit var moodAdapter: MoodAdapter
     private val chipMoodMap = mutableMapOf<Int, MoodPreset>()
+    private val emojiToChipId = mutableMapOf<String, Int>()
+    private var editingMood: MoodEntry? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,13 +64,16 @@ class MoodJournalFragment : Fragment() {
 
         binding.chipGroupMoods.removeAllViews()
         chipMoodMap.clear()
+        emojiToChipId.clear()
 
         moods.forEach { preset ->
             val chip = LayoutInflater.from(requireContext())
                 .inflate(R.layout.view_mood_chip, binding.chipGroupMoods, false) as Chip
+            chip.id = View.generateViewId()
             chip.text = getString(R.string.format_mood_chip, preset.emoji, preset.label)
             chip.isCheckable = true
             chipMoodMap[chip.id] = preset
+            emojiToChipId[preset.emoji] = chip.id
             binding.chipGroupMoods.addView(chip)
         }
     }
@@ -76,6 +81,10 @@ class MoodJournalFragment : Fragment() {
     private fun setupRecyclerView() {
         moodAdapter = MoodAdapter(
             moods = dataManager.getMoods(),
+            onMoodSelected = { mood ->
+                val chipId = emojiToChipId[mood.emoji]
+                enterEditingMode(mood, chipId)
+            },
             onMoodDelete = { mood ->
                 dataManager.deleteMood(mood.id)
                 refreshMoods()
@@ -93,8 +102,12 @@ class MoodJournalFragment : Fragment() {
         binding.buttonSaveMood.setOnClickListener { saveMoodEntry() }
 
         binding.buttonClear.setOnClickListener {
-            binding.chipGroupMoods.clearCheck()
-            binding.inputNote.text = null
+            if (editingMood != null) {
+                exitEditingMode()
+            } else {
+                binding.chipGroupMoods.clearCheck()
+                binding.inputNote.setText("")
+            }
         }
 
         binding.buttonAddMood.setOnClickListener {
@@ -102,7 +115,12 @@ class MoodJournalFragment : Fragment() {
                 (binding.root as? ScrollView)?.smoothScrollTo(0, binding.inputLayoutNote.top)
             }
             binding.chipGroupMoods.requestFocus()
+            if (editingMood != null) {
+                exitEditingMode()
+            }
         }
+
+        exitEditingMode()
     }
 
     private fun saveMoodEntry() {
@@ -115,18 +133,31 @@ class MoodJournalFragment : Fragment() {
         }
 
         val note = binding.inputNote.text?.toString()?.trim().orEmpty()
-        val mood = MoodEntry(
-            emoji = preset.emoji,
-            moodName = preset.label,
-            note = note.ifEmpty { null },
-            date = dataManager.getTodayDate()
-        )
+        val currentEditing = editingMood
+        if (currentEditing != null) {
+            val updatedMood = currentEditing.copy(
+                emoji = preset.emoji,
+                moodName = preset.label,
+                note = note.ifEmpty { null },
+                timestamp = System.currentTimeMillis()
+            )
+            dataManager.updateMood(updatedMood)
+            Toast.makeText(requireContext(), R.string.mood_updated, Toast.LENGTH_SHORT).show()
+            exitEditingMode()
+        } else {
+            val mood = MoodEntry(
+                emoji = preset.emoji,
+                moodName = preset.label,
+                note = note.ifEmpty { null },
+                date = dataManager.getTodayDate()
+            )
 
-        dataManager.addMood(mood)
-        Toast.makeText(requireContext(), R.string.mood_saved, Toast.LENGTH_SHORT).show()
+            dataManager.addMood(mood)
+            Toast.makeText(requireContext(), R.string.mood_saved, Toast.LENGTH_SHORT).show()
 
-        binding.chipGroupMoods.clearCheck()
-        binding.inputNote.text = null
+            binding.chipGroupMoods.clearCheck()
+            binding.inputNote.setText("")
+        }
 
         refreshMoods()
     }
@@ -141,6 +172,29 @@ class MoodJournalFragment : Fragment() {
         binding.recyclerRecentMoods.isVisible = hasMoods
         binding.textEmptyState.isVisible = !hasMoods
         binding.textEmptySubtitle.isVisible = !hasMoods
+    }
+
+    private fun enterEditingMode(mood: MoodEntry, chipId: Int?) {
+        editingMood = mood
+        binding.textEditingState.isVisible = true
+        binding.textEditingState.text = getString(R.string.editing_mood_hint, mood.emoji, mood.moodName)
+        binding.buttonSaveMood.text = getString(R.string.update_mood)
+        binding.buttonClear.text = getString(R.string.cancel)
+        binding.inputNote.setText(mood.note.orEmpty())
+        if (chipId != null) {
+            binding.chipGroupMoods.check(chipId)
+        } else {
+            binding.chipGroupMoods.clearCheck()
+        }
+    }
+
+    private fun exitEditingMode() {
+        editingMood = null
+        binding.textEditingState.isVisible = false
+        binding.buttonSaveMood.text = getString(R.string.save_mood)
+        binding.buttonClear.text = getString(R.string.clear_mood)
+        binding.inputNote.setText("")
+        binding.chipGroupMoods.clearCheck()
     }
 
     override fun onDestroyView() {
