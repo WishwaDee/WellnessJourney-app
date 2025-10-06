@@ -35,7 +35,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/habits_title"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_text_primary"
                         android:textSize="26sp"
                         android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="@string/habits_subtitle"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_text_secondary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_text_primary"
                         android:textSize="40sp"
                         android:textStyle="bold" />
 
@@ -78,7 +78,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textColor="@color/white"
+                            android:textColor="@color/color_text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -88,7 +88,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="end"
-                            android:textColor="@color/white"
+                            android:textColor="@color/color_text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -98,7 +98,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_text_secondary"
                         android:textSize="14sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

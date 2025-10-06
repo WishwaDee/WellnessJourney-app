@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mood_journal_title"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_text_primary"
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:text="@string/mood_journal_subtitle"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_text_secondary"
                     android:textSize="14sp" />
 
                 <TextView
@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/todays_mood"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_text_primary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
