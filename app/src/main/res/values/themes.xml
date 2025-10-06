@@ -9,8 +9,6 @@
         <item name="colorSecondaryContainer">@color/color_accent_variant</item>
         <item name="colorSurface">@color/color_surface</item>
         <item name="colorOnSurface">@color/color_text_primary</item>
-        <item name="colorBackground">@color/color_base</item>
-        <item name="colorOnBackground">@color/color_text_primary</item>
 
         <item name="android:windowBackground">@color/color_base</item>
         <item name="android:textColor">@color/color_text_primary</item>
