@@ -41,18 +41,22 @@ class NotificationHelper(private val context: Context) {
     }
 
     fun scheduleWaterReminder(intervalMinutes: Int) {
+        val safeInterval = intervalMinutes.coerceAtLeast(15)
+
         val workRequest = PeriodicWorkRequestBuilder<WaterReminderWorker>(
-            intervalMinutes.toLong(), TimeUnit.MINUTES,
+            safeInterval.toLong(), TimeUnit.MINUTES,
             15, TimeUnit.MINUTES // Flex interval
-        ).setConstraints(
-            Constraints.Builder()
-                .setRequiresBatteryNotLow(false)
-                .build()
-        ).build()
+        ).setInitialDelay(safeInterval.toLong(), TimeUnit.MINUTES)
+            .setConstraints(
+                Constraints.Builder()
+                    .setRequiresBatteryNotLow(false)
+                    .build()
+            )
+            .build()
 
         WorkManager.getInstance(context).enqueueUniquePeriodicWork(
             WORK_NAME,
-            ExistingPeriodicWorkPolicy.UPDATE,
+            ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
             workRequest
         )
     }
