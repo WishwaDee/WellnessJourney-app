@@ -1,11 +1,16 @@
 package com.wellnesstracker.fragments
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
@@ -26,6 +31,22 @@ class HydrationFragment : Fragment() {
     private lateinit var dataManager: DataManager
     private lateinit var notificationHelper: NotificationHelper
     private var customAmount = 250
+    private var pendingReminderSelection: Pair<Long, String>? = null
+
+    private val notificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            val selection = pendingReminderSelection
+            if (isGranted && selection != null) {
+                scheduleReminder(selection.first, selection.second)
+            } else if (!isGranted) {
+                Toast.makeText(
+                    requireContext(),
+                    R.string.hydration_reminder_permission_denied,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            pendingReminderSelection = null
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -120,24 +141,46 @@ class HydrationFragment : Fragment() {
             .setTitle(R.string.hydration_reminder_dialog_title)
             .setItems(options.map { it.second }.toTypedArray()) { _, which ->
                 val (delaySeconds, label) = options[which]
-                notificationHelper.scheduleOneTimeWaterReminder(delaySeconds)
-                updateReminderStatus()
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.hydration_reminder_scheduled_for, label),
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                if (!dataManager.areNotificationsEnabled()) {
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.hydration_reminder_permission_warning,
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+                handleReminderSelection(delaySeconds, label)
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
+    }
+
+    private fun handleReminderSelection(delaySeconds: Long, label: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val permissionStatus = ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.POST_NOTIFICATIONS
+            )
+
+            if (permissionStatus == PackageManager.PERMISSION_GRANTED) {
+                scheduleReminder(delaySeconds, label)
+            } else {
+                pendingReminderSelection = delaySeconds to label
+                notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        } else {
+            scheduleReminder(delaySeconds, label)
+        }
+    }
+
+    private fun scheduleReminder(delaySeconds: Long, label: String) {
+        notificationHelper.scheduleOneTimeWaterReminder(delaySeconds)
+        updateReminderStatus()
+        Toast.makeText(
+            requireContext(),
+            getString(R.string.hydration_reminder_scheduled_for, label),
+            Toast.LENGTH_SHORT
+        ).show()
+
+        if (!dataManager.areNotificationsEnabled()) {
+            Toast.makeText(
+                requireContext(),
+                R.string.hydration_reminder_permission_warning,
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     private fun updateReminderStatus() {
