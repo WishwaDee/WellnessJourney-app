@@ -56,6 +56,16 @@
     <string name="tip_two">⏰ Set reminders every 2 hours during the day.</string>
     <string name="tip_three">🥗 Eat water-rich foods like fruits and vegetables.</string>
     <string name="tip_four">🏃‍♀️ Drink extra water before, during, and after exercise.</string>
+    <string name="set_hydration_reminder">Schedule reminder</string>
+    <string name="cancel_hydration_reminder">Cancel reminder</string>
+    <string name="hydration_reminder_status_off">No reminder scheduled</string>
+    <string name="hydration_reminder_status_at">Reminder set for %1$s</string>
+    <string name="hydration_reminder_dialog_title">Pick reminder delay</string>
+    <string name="reminder_option_seconds">%1$d seconds</string>
+    <string name="reminder_option_minutes">%1$d minutes</string>
+    <string name="hydration_reminder_scheduled_for">Hydration reminder scheduled for %1$s</string>
+    <string name="hydration_reminder_cancelled">Hydration reminder cancelled</string>
+    <string name="hydration_reminder_permission_warning">Enable notifications in Settings to make sure reminders appear.</string>
 
     <!-- Formatting strings -->
     <string name="format_daily_goal">Daily goal: %1$d ml</string>
