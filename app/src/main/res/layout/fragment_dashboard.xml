@@ -18,6 +18,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/bg_dashboard_header"
             android:clipToPadding="false"
+            app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="28dp"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
