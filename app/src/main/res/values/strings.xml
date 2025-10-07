@@ -66,6 +66,7 @@
     <string name="hydration_reminder_scheduled_for">Hydration reminder scheduled for %1$s</string>
     <string name="hydration_reminder_cancelled">Hydration reminder cancelled</string>
     <string name="hydration_reminder_permission_warning">Enable notifications in Settings to make sure reminders appear.</string>
+    <string name="hydration_reminder_permission_denied">Notification permission is required to schedule reminders.</string>
 
     <!-- Formatting strings -->
     <string name="format_daily_goal">Daily goal: %1$d ml</string>
