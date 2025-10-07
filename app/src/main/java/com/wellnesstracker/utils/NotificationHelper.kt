@@ -165,6 +165,10 @@ class WaterReminderWorker(
     params: WorkerParameters
 ) : Worker(context, params) {
 
+    companion object {
+        const val KEY_IS_ONE_TIME = "is_one_time"
+    }
+
     override fun doWork(): Result {
         val dataManager = DataManager(applicationContext)
 
