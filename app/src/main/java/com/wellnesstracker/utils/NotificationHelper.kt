@@ -1,5 +1,6 @@
 package com.wellnesstracker.utils
 
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -9,15 +10,13 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import androidx.work.workDataOf
 import com.wellnesstracker.MainActivity
 import com.wellnesstracker.R
+import com.wellnesstracker.receivers.HydrationReminderReceiver
 import java.util.concurrent.TimeUnit
 
 class NotificationHelper(private val context: Context) {
@@ -27,7 +26,9 @@ class NotificationHelper(private val context: Context) {
         const val CHANNEL_NAME = "Wellness Reminders"
         const val NOTIFICATION_ID = 1001
         const val WORK_NAME = "water_reminder"
-        const val ONE_TIME_WORK_NAME = "water_reminder_one_time"
+        private const val REQUEST_CODE_ONE_TIME_REMINDER = 201
+        internal const val ACTION_ONE_TIME_REMINDER =
+            "com.wellnesstracker.action.ONE_TIME_WATER_REMINDER"
     }
 
     init {
@@ -72,26 +73,41 @@ class NotificationHelper(private val context: Context) {
 
     fun scheduleOneTimeWaterReminder(delaySeconds: Long) {
         val safeDelay = delaySeconds.coerceAtLeast(10L)
+        val triggerAt = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(safeDelay)
 
-        val workRequest = OneTimeWorkRequestBuilder<WaterReminderWorker>()
-            .setInitialDelay(safeDelay, TimeUnit.SECONDS)
-            .setInputData(
-                workDataOf(WaterReminderWorker.KEY_IS_ONE_TIME to true)
-            )
-            .build()
+        cancelOneTimeWaterReminder()
 
-        WorkManager.getInstance(context).enqueueUniqueWork(
-            ONE_TIME_WORK_NAME,
-            ExistingWorkPolicy.REPLACE,
-            workRequest
-        )
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val pendingIntent = buildOneTimeReminderPendingIntent(PendingIntent.FLAG_UPDATE_CURRENT)
 
-        val timestamp = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(safeDelay)
-        DataManager(context).setNextHydrationReminderTime(timestamp)
+        if (pendingIntent != null) {
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    alarmManager.setExactAndAllowWhileIdle(
+                        AlarmManager.RTC_WAKEUP,
+                        triggerAt,
+                        pendingIntent
+                    )
+                } else {
+                    @Suppress("DEPRECATION")
+                    alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerAt, pendingIntent)
+                }
+            } catch (securityException: SecurityException) {
+                alarmManager.set(AlarmManager.RTC_WAKEUP, triggerAt, pendingIntent)
+            }
+            DataManager(context).setNextHydrationReminderTime(triggerAt)
+        }
     }
 
     fun cancelOneTimeWaterReminder() {
-        WorkManager.getInstance(context).cancelUniqueWork(ONE_TIME_WORK_NAME)
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val pendingIntent = buildOneTimeReminderPendingIntent(PendingIntent.FLAG_NO_CREATE)
+
+        if (pendingIntent != null) {
+            alarmManager.cancel(pendingIntent)
+            pendingIntent.cancel()
+        }
+
         DataManager(context).clearNextHydrationReminderTime()
     }
 
@@ -122,6 +138,25 @@ class NotificationHelper(private val context: Context) {
         val notificationManager = context.getSystemService(NotificationManager::class.java)
         notificationManager.notify(NOTIFICATION_ID, notification)
     }
+
+    private fun buildOneTimeReminderPendingIntent(flag: Int): PendingIntent? {
+        val immutableFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            PendingIntent.FLAG_IMMUTABLE
+        } else {
+            0
+        }
+
+        val intent = Intent(context, HydrationReminderReceiver::class.java).apply {
+            action = ACTION_ONE_TIME_REMINDER
+        }
+
+        return PendingIntent.getBroadcast(
+            context,
+            REQUEST_CODE_ONE_TIME_REMINDER,
+            intent,
+            flag or immutableFlag
+        )
+    }
 }
 
 
@@ -136,15 +171,11 @@ class WaterReminderWorker(
 
     override fun doWork(): Result {
         val dataManager = DataManager(applicationContext)
-        val isOneTime = inputData.getBoolean(KEY_IS_ONE_TIME, false)
 
-        if (dataManager.areNotificationsEnabled() || isOneTime) {
+        if (dataManager.areNotificationsEnabled()) {
             NotificationHelper(applicationContext).showWaterReminder()
         }
 
-        if (isOneTime) {
-            dataManager.clearNextHydrationReminderTime()
-        }
         return Result.success()
     }
 }
