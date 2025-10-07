@@ -23,6 +23,7 @@ class DataManager(context: Context) {
         private const val KEY_HYDRATION = "hydration_entries"
         private const val KEY_HYDRATION_GOAL = "hydration_goal"
         private const val KEY_WATER_INTERVAL = "water_interval"
+        private const val KEY_NEXT_WATER_REMINDER = "next_water_reminder_timestamp"
         private const val KEY_NOTIFICATIONS_ENABLED = "notifications_enabled"
     }
 
@@ -203,6 +204,18 @@ class DataManager(context: Context) {
 
     fun getWaterInterval(): Int {
         return prefs.getInt(KEY_WATER_INTERVAL, 60) // Default 60 minutes
+    }
+
+    fun setNextHydrationReminderTime(timestamp: Long) {
+        prefs.edit().putLong(KEY_NEXT_WATER_REMINDER, timestamp).apply()
+    }
+
+    fun getNextHydrationReminderTime(): Long {
+        return prefs.getLong(KEY_NEXT_WATER_REMINDER, 0L)
+    }
+
+    fun clearNextHydrationReminderTime() {
+        prefs.edit().remove(KEY_NEXT_WATER_REMINDER).apply()
     }
 
     fun setNotificationsEnabled(enabled: Boolean) {

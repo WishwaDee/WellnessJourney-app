@@ -54,6 +54,10 @@
                 android:resource="@xml/habit_widget_info" />
         </receiver>
 
+        <receiver
+            android:name=".receivers.HydrationReminderReceiver"
+            android:exported="false" />
+
         <!-- WorkManager for notifications -->
         <provider
             android:name="androidx.startup.InitializationProvider"
